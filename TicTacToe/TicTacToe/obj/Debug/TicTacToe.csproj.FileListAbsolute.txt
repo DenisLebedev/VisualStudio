@@ -12,3 +12,6 @@ E:\VisualStudio\TicTacToe\TicTacToe\obj\Debug\TicTacToe.Properties.Resources.res
 E:\VisualStudio\TicTacToe\TicTacToe\obj\Debug\TicTacToe.csproj.GenerateResource.Cache
 E:\VisualStudio\TicTacToe\TicTacToe\obj\Debug\TicTacToe.exe
 E:\VisualStudio\TicTacToe\TicTacToe\obj\Debug\TicTacToe.pdb
+C:\Users\1532444\Source\Repos\VisualStudio\TicTacToe\TicTacToe\bin\Debug\TicTacToe.exe.config
+C:\Users\1532444\Source\Repos\VisualStudio\TicTacToe\TicTacToe\obj\Debug\TicTacToe.exe
+C:\Users\1532444\Source\Repos\VisualStudio\TicTacToe\TicTacToe\obj\Debug\TicTacToe.pdb
