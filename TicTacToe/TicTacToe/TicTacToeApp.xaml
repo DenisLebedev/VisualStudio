@@ -8,13 +8,13 @@
         Title="TicTacToeApp" Height="377.689" Width="500.84">
     <Grid>
         <Button x:Name="but1" Content="" HorizontalAlignment="Left" Margin="10,11,0,0" VerticalAlignment="Top" Width="75" Height="66"/>
-        <Button x:Name="but6" Content="" HorizontalAlignment="Left" Margin="10,91,0,0" VerticalAlignment="Top" Width="75" Height="66"/>
-        <Button x:Name="but3" Content="" HorizontalAlignment="Left" Margin="10,171,0,0" VerticalAlignment="Top" Width="75" Height="66"/>
-        <Button x:Name="but4" Content="" HorizontalAlignment="Left" Margin="97,91,0,0" VerticalAlignment="Top" Width="75" Height="66"/>
+        <Button x:Name="but4" Content="" HorizontalAlignment="Left" Margin="10,91,0,0" VerticalAlignment="Top" Width="75" Height="66"/>
+        <Button x:Name="but7" Content="" HorizontalAlignment="Left" Margin="10,171,0,0" VerticalAlignment="Top" Width="75" Height="66"/>
+        <Button x:Name="but5" Content="" HorizontalAlignment="Left" Margin="97,91,0,0" VerticalAlignment="Top" Width="75" Height="66"/>
         <Button x:Name="but2" Content="" HorizontalAlignment="Left" Margin="97,11,0,0" VerticalAlignment="Top" Width="75" Height="66"/>
         <Button x:Name="but8" Content="" HorizontalAlignment="Left" Margin="98,171,0,0" VerticalAlignment="Top" Width="75" Height="66"/>
-        <Button x:Name="but7" Content="" HorizontalAlignment="Left" Margin="184,91,0,0" VerticalAlignment="Top" Width="75" Height="66"/>
-        <Button x:Name="but5" Content="" HorizontalAlignment="Left" Margin="184,11,0,0" VerticalAlignment="Top" Width="75" Height="66"/>
+        <Button x:Name="but6" Content="" HorizontalAlignment="Left" Margin="184,91,0,0" VerticalAlignment="Top" Width="75" Height="66"/>
+        <Button x:Name="but3" Content="" HorizontalAlignment="Left" Margin="184,11,0,0" VerticalAlignment="Top" Width="75" Height="66"/>
         <Button x:Name="but9" Content="" HorizontalAlignment="Left" Margin="184,171,0,0" VerticalAlignment="Top" Width="75" Height="66"/>
         <Label x:Name="turnlabel" Content="Turn"  HorizontalAlignment="Left" Margin="316,11,0,0" VerticalAlignment="Top" Width="122" FontFamily="Showcard Gothic" FontSize="14" Background="#FFFDA4D5"/>
         <Label x:Name="displaylabel" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="9.183,4.682" Margin="316,38,0,0" Width="122" Height="42" Background="#FFDED7D7"/>

@@ -28,12 +28,8 @@ namespace TicTacToe
 
         private void newGame_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Is Dot Net Perls awesome?",
-        "Important Question", MessageBoxButton.YesNo);
-
-            MessageBox.Show("Is Dot Net Perls awesome?",
-        "Important Query", MessageBoxButton.YesNoCancel);
-
+            Window ticTacApp = new TicTacToeApp();
+            ticTacApp.Show();
         }
     }
 }
