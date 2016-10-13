@@ -67,5 +67,11 @@ namespace TicTacToe
                 return result;
         }
 
+        private void undobutton_Click(object sender, RoutedEventArgs e)
+        {
+
+            String message = "Are you sure you want to undo your last move? Warning: You can only undo one move.";
+            MessageBox.Show(message, MessageBoxButton.OK);
+        }
     }
 }
