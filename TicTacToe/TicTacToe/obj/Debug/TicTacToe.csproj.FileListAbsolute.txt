@@ -31,3 +31,6 @@ C:\Users\1537595\Source\Repos\VisualStudio2\TicTacToe\TicTacToe\obj\Debug\TicTac
 C:\Users\1537595\Source\Repos\VisualStudio2\TicTacToe\TicTacToe\obj\Debug\TicTacToe.g.resources
 C:\Users\1537595\Source\Repos\VisualStudio2\TicTacToe\TicTacToe\obj\Debug\TicTacToe.Properties.Resources.resources
 C:\Users\1537595\Source\Repos\VisualStudio2\TicTacToe\TicTacToe\obj\Debug\TicTacToe.csproj.GenerateResource.Cache
+E:\Visual Studio\Lab3\VisualStudio2\TicTacToe\TicTacToe\bin\Debug\TicTacToe.exe.config
+E:\Visual Studio\Lab3\VisualStudio2\TicTacToe\TicTacToe\obj\Debug\TicTacToe.exe
+E:\Visual Studio\Lab3\VisualStudio2\TicTacToe\TicTacToe\obj\Debug\TicTacToe.pdb

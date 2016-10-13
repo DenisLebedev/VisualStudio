@@ -16,8 +16,12 @@
         <Button x:Name="button_Copy5" Content="" HorizontalAlignment="Left" Margin="184,91,0,0" VerticalAlignment="Top" Width="75" Height="66"/>
         <Button x:Name="button_Copy6" Content="" HorizontalAlignment="Left" Margin="184,11,0,0" VerticalAlignment="Top" Width="75" Height="66"/>
         <Button x:Name="button_Copy7" Content="" HorizontalAlignment="Left" Margin="184,171,0,0" VerticalAlignment="Top" Width="75" Height="66"/>
-        <Label x:Name="turnlabel" Content="Turn"  HorizontalAlignment="Left" Margin="381,23,0,0" VerticalAlignment="Top" Width="92" FontFamily="Showcard Gothic" FontSize="14" Background="#FFFDA4D5"/>
-        <Label x:Name="displaylabel" Content="Label" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="9.183,4.682" Margin="381,50,0,0" Width="92" Height="42"/>
+        <Label x:Name="turnlabel" Content="Turn"  HorizontalAlignment="Left" Margin="316,11,0,0" VerticalAlignment="Top" Width="122" FontFamily="Showcard Gothic" FontSize="14" Background="#FFFDA4D5"/>
+        <Label x:Name="displaylabel" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="9.183,4.682" Margin="316,38,0,0" Width="122" Height="42" Background="#FFDED7D7"/>
+        <Label x:Name="p1label" Content="Player 1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="316,80,0,0" Width="60"/>
+        <Label x:Name="p2label" Content="Player 2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="376,80,0,0" Width="62"/>
+        <Label x:Name="p1scorelabel" Content="&#xD;&#xA;" HorizontalAlignment="Left" Margin="316,106,0,0" VerticalAlignment="Top" Width="60" Height="51" Background="#FFCBC1C1"/>
+        <Label x:Name="p2scorelabel" Content="&#xA;" HorizontalAlignment="Left" Margin="378,106,0,0" VerticalAlignment="Top" Width="60" Height="51" Background="#FFD6CCCC"/>
 
 
     </Grid>
