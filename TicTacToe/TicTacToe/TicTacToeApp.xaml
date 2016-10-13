@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="TicTacToeApp" Height="300" Width="300">
     <Grid>
-        
+        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="93,83,0,0" VerticalAlignment="Top" Width="75"/>
+
     </Grid>
 </Window>
