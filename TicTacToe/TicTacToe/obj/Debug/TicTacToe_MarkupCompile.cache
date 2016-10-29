@@ -1,20 +1,20 @@
 ﻿TicTacToe
 
 
-winexe
+exe
 C#
 .cs
-C:\Users\1537595\Source\Repos\VisualStudio3\TicTacToe\TicTacToe\obj\Debug\
+C:\GitHubRepo\C#\Project\Tic\TicTacToe\TicTacToe\obj\Debug\
 TicTacToe
 none
 false
 DEBUG;TRACE
-C:\Users\1537595\Source\Repos\VisualStudio3\TicTacToe\TicTacToe\App.xaml
+C:\GitHubRepo\C#\Project\Tic\TicTacToe\TicTacToe\App.xaml
 2228696579
 
 6-922293980
 13738642453
 MainWindow.xaml;TicTacToeApp.xaml;
 
-True
+False
 
