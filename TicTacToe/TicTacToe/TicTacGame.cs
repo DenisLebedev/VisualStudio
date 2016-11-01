@@ -61,7 +61,7 @@ namespace TicTacToe
         {
             get
             {
-                return turn;
+                return this.turn;
             }
             private set{
                 this.turn = value;
