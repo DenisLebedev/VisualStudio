@@ -31,5 +31,14 @@ namespace TicTacToe
             Window ticTacApp = new TicTacToeApp();
             ticTacApp.Show();
         }
+        
+        /*private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (comboBox.SelectedIndex == 1 || comboBox.SelectedIndex == 2)
+            {
+                Window ticTacApp = new TicTacToeApp();
+                ticTacApp.Show();
+            }
+        }*/
     }
 }

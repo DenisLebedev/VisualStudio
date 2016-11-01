@@ -25,6 +25,8 @@ namespace TicTacToe
         //Keep track of all turns (max 9)
         private short turn =0;
         private bool winner = false;
+        private int pointPl1 = 0;
+        private int pointPl2 = 0;
 
         //ALL possible combination to win ... 
         static private int[,] winCombination = new int[,] { { 0, 1, 2 }, { 3, 4, 5 }, { 6, 7, 8 }, { 0, 3, 6 }, { 1, 4, 7 }, { 2, 5, 8 }, { 0, 4, 8 }, { 2, 4, 6 } };
@@ -35,6 +37,9 @@ namespace TicTacToe
 
             //Initalize ALL 9 buttons from the game
             buttonArray = new Button[9] { but1, but2, but3, but4, but5, but6, but7, but8, but9 };
+
+            p1scorelabel.Content = pointPl1;
+            p2scorelabel.Content = pointPl2;
 
             //redirect ALL buttons in a general method
             for (int i = 0; i < 9; i++)
@@ -86,10 +91,11 @@ namespace TicTacToe
             if (turn != 9)
                 turn++;
 
-            Console.WriteLine("Turn: " + turn);
+            //Console.WriteLine("Turn: " + turn);
 
+            //Look if there is a winner after 5 turn only
             if (turn > 4)
-                this.winner = checkWinner(buttonArray);
+                this.winner = checkWinner(this.buttonArray);
 
         }
 
@@ -120,7 +126,6 @@ namespace TicTacToe
                     break;  // you won do not continue.
                 }
             }
-
                 return result;
         }
 
@@ -128,7 +133,7 @@ namespace TicTacToe
         {
 
           /*  String message = "Are you sure you want to undo your last move? Warning: You can only undo one move.";
-            MessageBox.Show(message, MessageBoxButton.OK);*/
+            MessageBox.Show(message, "CONFIRMATION" , MessageBoxButton.OK);*/
         }
     }
 }

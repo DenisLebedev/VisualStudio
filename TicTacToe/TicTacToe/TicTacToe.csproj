@@ -58,6 +58,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="TicTacGame.cs" />
     <Compile Include="TicTacToeApp.xaml.cs">
       <DependentUpon>TicTacToeApp.xaml</DependentUpon>
     </Compile>
