@@ -75,3 +75,16 @@ C:\GitHubRepo\C#\Project\Tic\TicTacToe\TicTacToe\obj\Debug\TicTacToeApp.baml
 C:\GitHubRepo\C#\Project\Tic\TicTacToe\TicTacToe\obj\Debug\TicTacToe.g.resources
 C:\GitHubRepo\C#\Project\Tic\TicTacToe\TicTacToe\obj\Debug\TicTacToe.Properties.Resources.resources
 C:\GitHubRepo\C#\Project\Tic\TicTacToe\TicTacToe\obj\Debug\TicTacToe.csproj.GenerateResource.Cache
+C:\Users\1532444\Source\Repos\VisualStudio\TicTacToe\TicTacToe\bin\Debug\TicTacToe.exe
+C:\Users\1532444\Source\Repos\VisualStudio\TicTacToe\TicTacToe\bin\Debug\TicTacToe.pdb
+C:\Users\1532444\Source\Repos\VisualStudio\TicTacToe\TicTacToe\obj\Debug\TicTacToe.csprojResolveAssemblyReference.cache
+C:\Users\1532444\Source\Repos\VisualStudio\TicTacToe\TicTacToe\obj\Debug\MainWindow.g.cs
+C:\Users\1532444\Source\Repos\VisualStudio\TicTacToe\TicTacToe\obj\Debug\TicTacToeApp.g.cs
+C:\Users\1532444\Source\Repos\VisualStudio\TicTacToe\TicTacToe\obj\Debug\App.g.cs
+C:\Users\1532444\Source\Repos\VisualStudio\TicTacToe\TicTacToe\obj\Debug\TicTacToe_MarkupCompile.cache
+C:\Users\1532444\Source\Repos\VisualStudio\TicTacToe\TicTacToe\obj\Debug\TicTacToe_MarkupCompile.lref
+C:\Users\1532444\Source\Repos\VisualStudio\TicTacToe\TicTacToe\obj\Debug\MainWindow.baml
+C:\Users\1532444\Source\Repos\VisualStudio\TicTacToe\TicTacToe\obj\Debug\TicTacToeApp.baml
+C:\Users\1532444\Source\Repos\VisualStudio\TicTacToe\TicTacToe\obj\Debug\TicTacToe.g.resources
+C:\Users\1532444\Source\Repos\VisualStudio\TicTacToe\TicTacToe\obj\Debug\TicTacToe.Properties.Resources.resources
+C:\Users\1532444\Source\Repos\VisualStudio\TicTacToe\TicTacToe\obj\Debug\TicTacToe.csproj.GenerateResource.Cache

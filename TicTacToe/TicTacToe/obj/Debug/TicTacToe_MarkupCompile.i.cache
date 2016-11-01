@@ -4,17 +4,17 @@
 exe
 C#
 .cs
-C:\GitHubRepo\C#\Project\Tic\TicTacToe\TicTacToe\obj\Debug\
+C:\Users\1532444\Source\Repos\VisualStudio\TicTacToe\TicTacToe\obj\Debug\
 TicTacToe
 none
 false
 DEBUG;TRACE
-C:\GitHubRepo\C#\Project\Tic\TicTacToe\TicTacToe\App.xaml
+C:\Users\1532444\Source\Repos\VisualStudio\TicTacToe\TicTacToe\App.xaml
 2228696579
 
-11-378158289
+131972576524
 13738642453
 MainWindow.xaml;TicTacToeApp.xaml;
 
-True
+False
 
