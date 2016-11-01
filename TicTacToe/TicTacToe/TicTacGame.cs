@@ -53,14 +53,30 @@ namespace TicTacToe
         }
 
 
+        /**
+         * This property will set a value from this class only 
+         * and will get the current turn 
+         */
+        public int Turn
+        {
+            get
+            {
+                return turn;
+            }
+            private set{
+                this.turn = value;
+            }
+        }
 
-
-
-
-
-
-
-
-
+        /**
+         *This method will call the property Turn  
+         * and set a the value for the next turn.
+         * The goal is to avoid instantiation of
+         * "turn" outside of the class.
+         */
+        public void nextTurn()
+        {
+            Turn = turn++;
+        }
     }
 }
