@@ -64,30 +64,16 @@ namespace TicTacToe
                     return placeYourCircle(i, buttonArray);     // if they are empty that mean nothing happen this turn
                 }
 
-
-                if (but1.Content == but2.Content && but2.Content == but3.Content)
-                {   
-                    //REMOVE -- DESIGN
-                    /*but1.Background = but2.Background = but3.Background = Brushes.Green; //Change the Color of the BackGroung
-                    but1.FontFamily = but2.FontFamily = but3.FontFamily = new FontFamily("Arial Black"); //Change the Text of the winner*/
-
-                    result = true;
-                    //break;  // you won do not continue.
-                }
-
             }
-            for (int j = 0; j < indexWin.Length; j++)
-                Console.WriteLine("\tIndexWinCombination: " + indexWin[j]);
-
-
-            return 0;
+           
+            return -1;
         }
 
         private int placeYourCircle(int index, Button[] buttonArray)
         {
             for (int i = 0; i < winCombination.GetLength(1); i++)
             {
-                Console.WriteLine("This one? : " + winCombination[index, i]);
+                Console.WriteLine("This one? : " + winCombination[index, i] + "\tL: " + winCombination.GetLength(1));
                 if (buttonArray[winCombination[index, i]].Content == "")
                     Console.WriteLine("This one Is EMPTUUU!! : " + winCombination[index, i]);
             }
