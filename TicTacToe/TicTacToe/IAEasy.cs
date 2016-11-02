@@ -30,9 +30,14 @@ namespace TicTacToe
             if (action == -1)
             {
                 Console.WriteLine("Block Gave -1 Bouuh");
+                normalPlay(buttonArray);
             }
 
-
+            if(action != -1)
+            {
+                Console.WriteLine("Block did not gave -1 =)");
+                playBlock(buttonArray, action);
+            }
 
 
 
@@ -102,13 +107,50 @@ namespace TicTacToe
             return foundEmpty;
         }
 
-        private void playBlock()
+        private void playBlock(Button[] buttonArray, int index)
         {
-
+            for(int i = 0; i < buttonArray.Length; i++)
+            {
+                if (buttonArray[i].Content == "" && i != index)
+                    buttonArray[i].Content = "O";
+            }
         }
 
-        private void normalPlay()
+
+        /**
+         * If you cannot Block you will just play a random 
+         * turn. 
+         */
+        private void normalPlay(Button[] buttonArray)
         {
+            Random rnd = new Random();
+
+            for(int i =0; i < buttonArray.Length; i++)
+            {   
+                //All good player will not focus the middle first!
+                if (buttonArray[4].Content == "")
+                {
+                    buttonArray[4].Content = "O";
+                    //Play ONLY once and leave
+                    return;
+                }
+
+                /*
+                *Then just place it in a Random Place
+                *IF the user can win we do not care because
+                *the method playBlock will ensure that the IA
+                *will not block the user.
+                */
+                //!!!!!!!!!!!!!!!!!!!Careful with the random!!!!!!!!!!!!!!!!!!!!
+                if (buttonArray[rnd.Next((10 - i))].Content == "")
+                {
+                    buttonArray[5].Content = "O";
+                    return;
+                }
+
+            }
+
+            Console.WriteLine("MMhh Random did not made his job...");
 
         }
 
