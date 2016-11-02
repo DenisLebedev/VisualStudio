@@ -31,17 +31,12 @@ namespace TicTacToe
 
         public int Block(Button [] buttonArray, int[,] winCombination)
         {   
-            //Will a possibility of winning 
-            //THERE 3 POSSIBLE WAYS OF WINNING
-            int[] indexWin = new int[3];
-
             bool result = false;
 
 
             //Loop looking for a POSSIBLE WIN
             for (int i = 0; i < 8 && !result; i++)
             {
-                int index = 0;
                 int a = winCombination[i, 0];
                 int b = winCombination[i, 1];
                 int c = winCombination[i, 2];
@@ -53,26 +48,20 @@ namespace TicTacToe
                 if (but1.Content == "X" && but2.Content == "X" && but3.Content == "") // Look if there is a POSSIBLE WIN
                 {
                     Console.WriteLine("Combination X, X, ''\t: " + i);
-                    indexWin[index] = i;
-                    index++;
-                    //return i;    // if they are empty that mean nothing happen this turn
+                    return placeYourCircle(i, buttonArray);    // if they are empty that mean nothing happen this turn
                 }
 
                 if (but1.Content == "X" && but2.Content == "" && but3.Content == "X") 
                 {
                     Console.WriteLine("Combination X, '', X\t: " + i);
-                    indexWin[index] = i;
-                    index++;
-                   // return i;    // if they are empty that mean nothing happen this turn
+                    return placeYourCircle(i, buttonArray);    // if they are empty that mean nothing happen this turn
                 }
 
 
                 if (but1.Content == "" && but2.Content == "X" && but3.Content == "X")
                 {
                     Console.WriteLine("Combination '', X, X\t: " + i);
-                    indexWin[index] = i;
-                    index++;
-                    //return i;     // if they are empty that mean nothing happen this turn
+                    return placeYourCircle(i, buttonArray);     // if they are empty that mean nothing happen this turn
                 }
 
 
@@ -94,9 +83,14 @@ namespace TicTacToe
             return 0;
         }
 
-        private int placeYourCircle(int index)
-        {   
-
+        private int placeYourCircle(int index, Button[] buttonArray)
+        {
+            for (int i = 0; i < winCombination.GetLength(1); i++)
+            {
+                Console.WriteLine("This one? : " + winCombination[index, i]);
+                if (buttonArray[winCombination[index, i]].Content == "")
+                    Console.WriteLine("This one Is EMPTUUU!! : " + winCombination[index, i]);
+            }
             return 1;
         }
 

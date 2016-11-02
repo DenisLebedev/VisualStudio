@@ -86,8 +86,10 @@ namespace TicTacToe
                 MessageBox.Show("Button already has value!", "ERROR", MessageBoxButton.OK);
                 return;
             }
-            
-            if(turn % 2 == 0)
+
+            //easy.Block(buttonArray, winCombination);
+
+            if (turn % 2 == 0)
                 tempButton.Content = "X";
             else
                 tempButton.Content = "O";
