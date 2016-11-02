@@ -29,7 +29,7 @@ namespace TicTacToe
         private int pointPl2 = 0;
 
         //ALL possible combination to win ... 
-        static private int[,] winCombination = new int[,] { { 0, 1, 2 }, { 3, 4, 5 }, { 6, 7, 8 }, { 0, 3, 6 }, { 1, 4, 7 }, { 2, 5, 8 }, { 0, 4, 8 }, { 2, 4, 6 } };
+        private int[,] winCombination = new int[,] { { 0, 1, 2 }, { 3, 4, 5 }, { 6, 7, 8 }, { 0, 3, 6 }, { 1, 4, 7 }, { 2, 5, 8 }, { 0, 4, 8 }, { 2, 4, 6 } };
 
         public TicTacToeApp()
         {
@@ -61,6 +61,11 @@ namespace TicTacToe
             //the sender is the button that WAS clicked + it a safe cast
             Button tempButton = (Button)sender;
 
+            IAEasy easy = new IAEasy();
+
+            
+
+
             if (this.winner)
             {
                 MessageBox.Show("Game Over Congratulation","ERROR", MessageBoxButton.OK);
@@ -87,6 +92,8 @@ namespace TicTacToe
             else
                 tempButton.Content = "O";
 
+            easy.Block(buttonArray, winCombination);
+
             //IF we clic we increment Turn
             if (turn != 9)
                 turn++;
@@ -95,16 +102,16 @@ namespace TicTacToe
 
             //Look if there is a winner after 5 turn only
             if (turn > 4)
-                this.winner = checkWinner(this.buttonArray);
+                this.winner = checkWinner(this.buttonArray,winCombination);
 
         }
 
-        private static bool checkWinner(Button [] buttonArray)
+        private static bool checkWinner(Button [] buttonArray, int [,] winCombination)
         {
             bool result = false;
 
             //Loop looking for a Winner
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < 8 && !result; i++)
             {
                 int a = winCombination[i, 0];
                 int b = winCombination[i, 1];
@@ -123,7 +130,7 @@ namespace TicTacToe
                     but1.FontFamily = but2.FontFamily = but3.FontFamily = new FontFamily("Arial Black"); //Change the Text of the winner
 
                     result = true;
-                    break;  // you won do not continue.
+                    //break;  // you won do not continue.
                 }
             }
                 return result;

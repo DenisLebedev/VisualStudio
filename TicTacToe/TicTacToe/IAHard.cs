@@ -8,5 +8,10 @@ namespace TicTacToe
 {
     class IAHard
     {
+
+        public IAHard()
+        {
+
+        }
     }
 }
