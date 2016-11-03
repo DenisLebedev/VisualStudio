@@ -41,6 +41,8 @@ namespace TicTacToe
             p1scorelabel.Content = pointPl1;
             p2scorelabel.Content = pointPl2;
 
+            //TicTacGame game = new TicTacGame("Hard",0,0);
+
             //redirect ALL buttons in a general method
             for (int i = 0; i < 9; i++)
             {
@@ -61,15 +63,14 @@ namespace TicTacToe
             //the sender is the button that WAS clicked + it a safe cast
             Button tempButton = (Button)sender;
 
-            IAEasy easy = new IAEasy();
-            IAHard hard = new IAHard();
-
+            //IAEasy easy = new IAEasy();
+            //IAHard hard = new IAHard();
+            //TicTacGame game = new TicTacGame("Hard",);
             
-
 
             if (this.winner)
             {
-                MessageBox.Show("Game Over Congratulation","ERROR", MessageBoxButton.OK);
+                MessageBox.Show("Game Over Congratulation","For Dumb Only", MessageBoxButton.OK);
                 return;
             }
 
@@ -88,12 +89,9 @@ namespace TicTacToe
                 return;
             }
 
-            //easy.Block(buttonArray, winCombination);
-
-            if (turn % 2 == 0)
                 tempButton.Content = "X";
-            else
-                hard.Play(buttonArray, winCombination);
+
+                IAHard.Play(buttonArray, winCombination);
 
                 //easy.Play(buttonArray, winCombination);
                 //tempButton.Content = "O";
@@ -101,8 +99,8 @@ namespace TicTacToe
             //easy.Block(buttonArray, winCombination);
 
             //IF we clic we increment Turn
-            if (turn != 9)
-                turn++;
+            if (turn != 9) 
+                turn+=2;
 
             //Console.WriteLine("Turn: " + turn);
 

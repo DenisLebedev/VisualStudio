@@ -13,7 +13,7 @@ namespace TicTacToe
         private int[,] winCombination = new int[,] { { 0, 1, 2 }, { 3, 4, 5 }, { 6, 7, 8 }, { 0, 3, 6 }, { 1, 4, 7 }, { 2, 5, 8 }, { 0, 4, 8 }, { 2, 4, 6 } };
 
 
-        public IAHard()
+        private IAHard()
         {
 
         }
@@ -23,31 +23,25 @@ namespace TicTacToe
          * methods to make the EasyIA play
          * 
          */
-        public void Play(Button[] buttonArray, int[,] winCombination)
+        public static void Play(Button[] buttonArray, int[,] winCombination)
         {
             int action;
             action = Block(buttonArray, winCombination);
 
             if (action == -1)
             {
-                Console.WriteLine("Block Gave -1 Bouuh");
                 normalPlay(buttonArray);
             }
 
             if (action != -1)
             {
-                Console.WriteLine("Block did not gave -1 =) \tAction: " + action);
                 playBlock(buttonArray, action);
             }
-
-            //Console.WriteLine("I SHOULD NOT APPEAR IM IN PLAY");
-
-            //return 1;
         }
 
 
 
-        public int Block(Button[] buttonArray, int[,] winCombination)
+        private static int Block(Button[] buttonArray, int[,] winCombination)
         {
             //Loop looking for a POSSIBLE WIN
             for (int i = 0; i < 8; i++)
@@ -63,25 +57,20 @@ namespace TicTacToe
                 // Look if there is a POSSIBLE WIN
                 if (but1.Content == "X" && but2.Content == "X" && but3.Content == "")
                 {
-                    Console.WriteLine("Combination X, X, ''\t: " + i);
-                    return indexOfBlock(i, buttonArray);    //Will look which index of the button will be EMPTY
+                    return indexOfBlock(i, buttonArray, winCombination);    //Will look which index of the button will be EMPTY
                 }
 
                 if (but1.Content == "X" && but2.Content == "" && but3.Content == "X")
                 {
-                    Console.WriteLine("Combination X, '', X\t: " + i);
-                    return indexOfBlock(i, buttonArray);    //Will look which index of the button will be EMPTY
+                    return indexOfBlock(i, buttonArray, winCombination);    //Will look which index of the button will be EMPTY
                 }
 
                 if (but1.Content == "" && but2.Content == "X" && but3.Content == "X")
                 {
-                    Console.WriteLine("Combination '', X, X\t: " + i);
-                    return indexOfBlock(i, buttonArray);     //Will look which index of the button will be EMPTY
+                    return indexOfBlock(i, buttonArray, winCombination);     //Will look which index of the button will be EMPTY
                 }
 
             }
-
-            Console.WriteLine("Return -1!");
             return -1;
         }
 
@@ -92,7 +81,7 @@ namespace TicTacToe
          * If I do not found it I will return -1 and deal with it 
          * in the Play method.
          */
-        private int indexOfBlock(int index, Button[] buttonArray)
+        private static int indexOfBlock(int index, Button[] buttonArray, int[,] winCombination)
         {
             int foundEmpty = -1;
 
@@ -101,7 +90,6 @@ namespace TicTacToe
                 Console.WriteLine("This one? : " + winCombination[index, i] + "\tL: " + winCombination.GetLength(1));
                 if (buttonArray[winCombination[index, i]].Content == "")
                 {
-                    Console.WriteLine("This one Is EMPTUUU!! : " + winCombination[index, i]);
                     foundEmpty = winCombination[index, i];
                     Console.WriteLine("\tFoundEmpty: " + foundEmpty);
                 }
@@ -109,7 +97,7 @@ namespace TicTacToe
             return foundEmpty;
         }
 
-        private void playBlock(Button[] buttonArray, int index)
+        private static void playBlock(Button[] buttonArray, int index)
         {
             Console.WriteLine("Content at Index: " + buttonArray[index].Content + "Index: " + index);
                 if (buttonArray[index].Content == "")
@@ -117,7 +105,6 @@ namespace TicTacToe
                     buttonArray[index].Content = "O";
                     return;
                 }
-            Console.WriteLine("ERROR IN PLAYBLOCK I SHOULD NOT APPEAR");
         }
 
 
@@ -125,10 +112,29 @@ namespace TicTacToe
          * If you cannot Block you will just play a random 
          * turn. 
          */
-        private void normalPlay(Button[] buttonArray)
+        private static void normalPlay(Button[] buttonArray)
         {
+           
+            //Take a corner and I will take the middle
+            if ((buttonArray[0].Content == "X" || buttonArray[2].Content == "X" ||
+                buttonArray[6].Content == "X" || buttonArray[8].Content == "X") && buttonArray[4].Content == "")
+            {
+                buttonArray[4].Content = "O";
+                return;
+            }
 
-            //All good player will not focus the middle first!
+
+            int[,] game = new int[4, 9] { { 2, 6, 4, 7, 5, 8, 0, 1, 3 }, { 6, 8, 4, 0, 2, 3, 5, 1, 7 }, { 0, 2, 6, 1, 3, 8, 4, 7, 5 }, {2,4,6,0,8,1,7,5,3 } };
+            Random rnd = new Random();
+            int num = rnd.Next(0, 4);
+            for(int i=0; i < 8; i++)
+                if (buttonArray[game[num,i]].Content == "")
+                {
+                    buttonArray[game[num, i]].Content = "O";
+                    //Play ONLY once and leave
+                    return;
+                }
+            /*//All good player will not focus the middle first!
             if (buttonArray[2].Content == "")
             {
                 buttonArray[2].Content = "O";
@@ -182,10 +188,7 @@ namespace TicTacToe
                 buttonArray[3].Content = "O";
                 //Play ONLY once and leave
                 return;
-            }
-
-            Console.WriteLine("\tMMhh");
-
+            }*/
         }
     }
 }
