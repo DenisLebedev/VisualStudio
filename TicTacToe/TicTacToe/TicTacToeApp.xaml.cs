@@ -62,6 +62,7 @@ namespace TicTacToe
             Button tempButton = (Button)sender;
 
             IAEasy easy = new IAEasy();
+            IAHard hard = new IAHard();
 
             
 
@@ -92,9 +93,12 @@ namespace TicTacToe
             if (turn % 2 == 0)
                 tempButton.Content = "X";
             else
-                tempButton.Content = "O";
+                hard.Play(buttonArray, winCombination);
 
-            easy.Block(buttonArray, winCombination);
+                //easy.Play(buttonArray, winCombination);
+                //tempButton.Content = "O";
+
+            //easy.Block(buttonArray, winCombination);
 
             //IF we clic we increment Turn
             if (turn != 9)

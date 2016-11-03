@@ -22,7 +22,7 @@ namespace TicTacToe
          * methods to make the EasyIA play
          * 
          */ 
-        public int Play(Button[] buttonArray, int[,] winCombination)
+        public void Play(Button[] buttonArray, int[,] winCombination)
         {
             int action;
             action = Block(buttonArray, winCombination);
@@ -35,13 +35,13 @@ namespace TicTacToe
 
             if(action != -1)
             {
-                Console.WriteLine("Block did not gave -1 =)");
+                Console.WriteLine("Block did not gave -1");
                 playBlock(buttonArray, action);
             }
 
 
 
-            return 1;
+            //return 1;
         }
 
 
@@ -101,18 +101,24 @@ namespace TicTacToe
                 if (buttonArray[winCombination[index, i]].Content == "")
                 {
                     Console.WriteLine("This one Is EMPTUUU!! : " + winCombination[index, i]);
-                    foundEmpty = i;
+                    foundEmpty = winCombination[index, i];
+                    Console.WriteLine("\tFoundEmpty: " + foundEmpty);
                 }
             }
             return foundEmpty;
         }
 
         private void playBlock(Button[] buttonArray, int index)
-        {
+        {       
+
             for(int i = 0; i < buttonArray.Length; i++)
             {
+
                 if (buttonArray[i].Content == "" && i != index)
+                {
                     buttonArray[i].Content = "O";
+                    return;
+                }
             }
         }
 
@@ -123,10 +129,7 @@ namespace TicTacToe
          */
         private void normalPlay(Button[] buttonArray)
         {
-            Random rnd = new Random();
-
-            for(int i =0; i < buttonArray.Length; i++)
-            {   
+  
                 //All good player will not focus the middle first!
                 if (buttonArray[4].Content == "")
                 {
@@ -134,23 +137,54 @@ namespace TicTacToe
                     //Play ONLY once and leave
                     return;
                 }
-
-                /*
-                *Then just place it in a Random Place
-                *IF the user can win we do not care because
-                *the method playBlock will ensure that the IA
-                *will not block the user.
-                */
-                //!!!!!!!!!!!!!!!!!!!Careful with the random!!!!!!!!!!!!!!!!!!!!
-                if (buttonArray[rnd.Next((10 - i))].Content == "")
+            
+                if (buttonArray[5].Content == "")
                 {
                     buttonArray[5].Content = "O";
                     return;
                 }
 
-            }
+                if (buttonArray[3].Content == "")
+                {
+                    buttonArray[3].Content = "O";
+                    return;
+                }
 
-            Console.WriteLine("MMhh Random did not made his job...");
+                if (buttonArray[8].Content == "")
+                {
+                    buttonArray[8].Content = "O";
+                    return;
+                }
+
+                if (buttonArray[2].Content == "")
+                {
+                    buttonArray[2].Content = "O";
+                    return;
+                }
+
+                if (buttonArray[0].Content == "")
+                {
+                    buttonArray[0].Content = "O";
+                    return;
+                }
+
+                if (buttonArray[1].Content == "")
+                {
+                    buttonArray[1].Content = "O";
+                    return;
+                }
+                if (buttonArray[6].Content == "")
+                {
+                    buttonArray[6].Content = "O";
+                    return;
+                }
+                if (buttonArray[7].Content == "")
+                {
+                    buttonArray[7].Content = "O";
+                    return;
+                }
+
+            Console.WriteLine("\tMMhh");
 
         }
 
