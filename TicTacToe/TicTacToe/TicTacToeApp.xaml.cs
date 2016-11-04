@@ -49,8 +49,7 @@ namespace TicTacToe
             p1scorelabel.Content = game.PointPl1;
             p2scorelabel.Content = game.PointPl2;
 
-            game.addPointPl1();
-            p1scorelabel.Content = game.PointPl1;
+
 
             //redirect ALL buttons in a general method
             for (int i = 0; i < 9; i++)
@@ -77,7 +76,6 @@ namespace TicTacToe
                 return;
             }
 
-
             //9 turn were made and nobody won = tie
             if (turn == 9)
             {
@@ -96,18 +94,19 @@ namespace TicTacToe
             if (turn != 9)
             {
                 tempButton.Content = "X";
-                turn++;
+                game.nextTurn();
 
                 //Saving state
                 buttonState = saveButtonState(buttonArray, buttonState);
 
                 if (turn > 4)
                     this.winner = checkWinner(this.buttonArray, winCombination);
+                if (winner)
+                    game.addPointPl1();
+                else {              
 
-                if (!winner)
-                {
                     IAHard.Play(buttonArray, winCombination);
-                    turn++;
+                    game.nextTurn();
 
                     //Saving state
                     buttonState = saveButtonState(buttonArray, buttonState);
@@ -116,6 +115,7 @@ namespace TicTacToe
                     if (winner)
                     {
                         MessageBox.Show("Only dumb can loose...","MessageForDumb", MessageBoxButton.OK);
+                        game.addPointPl2();
                     }
                 }
             }
@@ -158,12 +158,6 @@ namespace TicTacToe
 
           /*  String message = "Are you sure you want to undo your last move? Warning: You can only undo one move.";
             MessageBox.Show(message, "CONFIRMATION" , MessageBoxButton.OK);*/
-        }
-
-        private TicTacGame gameState()
-        {
-
-            return null;
         }
 
         private string[] saveButtonState(Button[] buttonArray, string[] buttonState)

@@ -80,7 +80,7 @@ namespace TicTacToe
          */
         public void nextTurn()
         {
-            Turn = turn++;
+            Turn = turn+=1;
         }
 
         public string IA
@@ -118,12 +118,13 @@ namespace TicTacToe
 
         public void addPointPl1()
         {
-            PointPl1 = pointPl1++;
+               
+            PointPl1 = pointPl1+= 1;
         }
 
         public void addPointPl2()
         {
-            PointPl2 = pointPl2++;
+            PointPl2 = pointPl2+= 1;
         }
 
         public int[,] getWinCombination
