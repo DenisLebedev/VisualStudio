@@ -99,6 +99,7 @@ namespace TicTacToe
             }
             private set
             {
+                Console.WriteLine("PrivateSetterPl1: " + value);
                 this.pointPl1 = value;
             }
         }

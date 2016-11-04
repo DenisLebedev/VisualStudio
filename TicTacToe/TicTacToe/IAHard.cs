@@ -161,9 +161,23 @@ namespace TicTacToe
                 return;
             }
 
+            
             if ((buttonArray[6].Content == "X" && buttonArray[2].Content == "X") && buttonArray[5].Content == "")
             {
                 buttonArray[5].Content = "O";
+                return;
+            }
+
+            if((buttonArray[0].Content == "X" && buttonArray[8].Content == "X") && buttonArray[3].Content == "")
+            {
+                buttonArray[3].Content = "O";
+                return;
+            }
+
+            if (((buttonArray[7].Content == "X" && (buttonArray[5].Content == "X" || buttonArray[3].Content == "X")) && buttonArray[4].Content == "")||
+                ((buttonArray[1].Content == "X" && (buttonArray[3].Content == "X" || buttonArray[5].Content == "X")) && buttonArray[4].Content == ""))
+            {
+                buttonArray[4].Content = "O";
                 return;
             }
 

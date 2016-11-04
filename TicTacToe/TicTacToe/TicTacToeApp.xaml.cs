@@ -28,8 +28,11 @@ namespace TicTacToe
         private int pointPl1 = 0;
         private int pointPl2 = 0;
 
+        private TicTacGame game;
+
         //ALL possible combination to win ... 
         private int[,] winCombination = new int[,] { { 0, 1, 2 }, { 3, 4, 5 }, { 6, 7, 8 }, { 0, 3, 6 }, { 1, 4, 7 }, { 2, 5, 8 }, { 0, 4, 8 }, { 2, 4, 6 } };
+        private string[] buttonState = new string[9];
 
         public TicTacToeApp()
         {
@@ -38,17 +41,22 @@ namespace TicTacToe
             //Initalize ALL 9 buttons from the game
             buttonArray = new Button[9] { but1, but2, but3, but4, but5, but6, but7, but8, but9 };
 
-            TicTacGame game = new TicTacGame("Hard",0,pointPl1, pointPl2);
 
+            //Default new game
+            game = new TicTacGame("Hard",0,0,0);
+
+            //Loading points on the board
             p1scorelabel.Content = game.PointPl1;
             p2scorelabel.Content = game.PointPl2;
+
+            game.addPointPl1();
+            p1scorelabel.Content = game.PointPl1;
 
             //redirect ALL buttons in a general method
             for (int i = 0; i < 9; i++)
             {
                 buttonArray[i].Click += new RoutedEventHandler(ClickHandler);
-            }
-            
+            }            
             
         }
 
@@ -61,14 +69,7 @@ namespace TicTacToe
         private void ClickHandler(object sender, RoutedEventArgs e)
         {
             //the sender is the button that WAS clicked + it a safe cast
-            Button tempButton = (Button)sender;
-
-            //IAEasy easy = new IAEasy();
-            //IAHard hard = new IAHard();
-            //TicTacGame game = new TicTacGame("Hard",turn,0);
-            
-
-
+            Button tempButton = (Button)sender;           
 
             if (this.winner)
             {
@@ -96,6 +97,10 @@ namespace TicTacToe
             {
                 tempButton.Content = "X";
                 turn++;
+
+                //Saving state
+                buttonState = saveButtonState(buttonArray, buttonState);
+
                 if (turn > 4)
                     this.winner = checkWinner(this.buttonArray, winCombination);
 
@@ -103,6 +108,10 @@ namespace TicTacToe
                 {
                     IAHard.Play(buttonArray, winCombination);
                     turn++;
+
+                    //Saving state
+                    buttonState = saveButtonState(buttonArray, buttonState);
+
                     this.winner = checkWinner(this.buttonArray, winCombination);
                     if (winner)
                     {
@@ -110,6 +119,7 @@ namespace TicTacToe
                     }
                 }
             }
+
 
         }
 
@@ -154,6 +164,14 @@ namespace TicTacToe
         {
 
             return null;
+        }
+
+        private string[] saveButtonState(Button[] buttonArray, string[] buttonState)
+        {
+            for (int i = 0; i < buttonArray.Length; i++)
+                buttonState[i] = buttonArray[i].Content + "";
+
+            return buttonState;
         }
     }
 }
