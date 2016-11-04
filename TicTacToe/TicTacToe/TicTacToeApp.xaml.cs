@@ -38,10 +38,10 @@ namespace TicTacToe
             //Initalize ALL 9 buttons from the game
             buttonArray = new Button[9] { but1, but2, but3, but4, but5, but6, but7, but8, but9 };
 
-            p1scorelabel.Content = pointPl1;
-            p2scorelabel.Content = pointPl2;
+            TicTacGame game = new TicTacGame("Hard",0,pointPl1, pointPl2);
 
-            //TicTacGame game = new TicTacGame("Hard",0,0);
+            p1scorelabel.Content = game.PointPl1;
+            p2scorelabel.Content = game.PointPl2;
 
             //redirect ALL buttons in a general method
             for (int i = 0; i < 9; i++)
@@ -65,8 +65,10 @@ namespace TicTacToe
 
             //IAEasy easy = new IAEasy();
             //IAHard hard = new IAHard();
-            //TicTacGame game = new TicTacGame("Hard",);
+            //TicTacGame game = new TicTacGame("Hard",turn,0);
             
+
+
 
             if (this.winner)
             {
@@ -89,24 +91,25 @@ namespace TicTacToe
                 return;
             }
 
-                tempButton.Content = "X";
-
-                IAHard.Play(buttonArray, winCombination);
-
-                //easy.Play(buttonArray, winCombination);
-                //tempButton.Content = "O";
-
-            //easy.Block(buttonArray, winCombination);
-
             //IF we clic we increment Turn
-            if (turn != 9) 
-                turn+=2;
+            if (turn != 9)
+            {
+                tempButton.Content = "X";
+                turn++;
+                if (turn > 4)
+                    this.winner = checkWinner(this.buttonArray, winCombination);
 
-            //Console.WriteLine("Turn: " + turn);
-
-            //Look if there is a winner after 5 turn only
-            if (turn > 4)
-                this.winner = checkWinner(this.buttonArray,winCombination);
+                if (!winner)
+                {
+                    IAHard.Play(buttonArray, winCombination);
+                    turn++;
+                    this.winner = checkWinner(this.buttonArray, winCombination);
+                    if (winner)
+                    {
+                        MessageBox.Show("Only dumb can loose...","MessageForDumb", MessageBoxButton.OK);
+                    }
+                }
+            }
 
         }
 
@@ -145,6 +148,12 @@ namespace TicTacToe
 
           /*  String message = "Are you sure you want to undo your last move? Warning: You can only undo one move.";
             MessageBox.Show(message, "CONFIRMATION" , MessageBoxButton.OK);*/
+        }
+
+        private TicTacGame gameState()
+        {
+
+            return null;
         }
     }
 }

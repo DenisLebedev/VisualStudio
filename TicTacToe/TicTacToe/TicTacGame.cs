@@ -11,13 +11,17 @@ namespace TicTacToe
     {
         private String ia;
         private int turn;
-        private int points;
+        private int pointPl1;
+        private int pointPl2;
+        private int[,] winCombination = new int[,] { { 0, 1, 2 }, { 3, 4, 5 }, { 6, 7, 8 }, { 0, 3, 6 }, { 1, 4, 7 }, { 2, 5, 8 }, { 0, 4, 8 }, { 2, 4, 6 } };
 
-        public TicTacGame(String ia, int turn, int points)
+
+        public TicTacGame(String ia, int turn, int pointPl1, int pointPl2)
         {
             this.ia = ia;
             this.turn = turn;
-            this.points = points;
+            this.pointPl1 = pointPl1;
+            this.pointPl2 = pointPl2;
         }
 
         public static bool checkWinner(Button [] buttonArray)
@@ -77,6 +81,56 @@ namespace TicTacToe
         public void nextTurn()
         {
             Turn = turn++;
+        }
+
+        public string IA
+        {
+            get
+            {
+                return this.ia.ToString();
+            }
+        }
+
+        public int PointPl1
+        {
+            get
+            {
+                return this.pointPl1;
+            }
+            private set
+            {
+                this.pointPl1 = value;
+            }
+        }
+
+        public int PointPl2
+        {
+            get
+            {
+                return this.pointPl2;
+            }
+            private set
+            {
+                this.pointPl2 = value;
+            }
+        }
+
+        public void addPointPl1()
+        {
+            PointPl1 = pointPl1++;
+        }
+
+        public void addPointPl2()
+        {
+            PointPl2 = pointPl2++;
+        }
+
+        public int[,] getWinCombination
+        {
+            get
+            {
+                return new int[,] { { 0, 1, 2 }, { 3, 4, 5 }, { 6, 7, 8 }, { 0, 3, 6 }, { 1, 4, 7 }, { 2, 5, 8 }, { 0, 4, 8 }, { 2, 4, 6 } };
+            }
         }
     }
 }
