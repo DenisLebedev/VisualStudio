@@ -97,19 +97,19 @@ namespace TicTacToe
                 game.nextTurn();
 
                 //Saving state
-                buttonState = saveButtonState(buttonArray, buttonState);
+                game.saveButtonState(buttonArray);
 
                 if (turn > 4)
                     this.winner = checkWinner(this.buttonArray, winCombination);
                 if (winner)
                     game.addPointPl1();
-                else {              
-
-                    IAHard.Play(buttonArray, winCombination);
+                else {
+                   
+                    IAHard.Play(game.getButtonState(), game.getWinCombination);
                     game.nextTurn();
 
                     //Saving state
-                    buttonState = saveButtonState(buttonArray, buttonState);
+                    game.saveButtonState(buttonArray);
 
                     this.winner = checkWinner(this.buttonArray, winCombination);
                     if (winner)
@@ -160,12 +160,17 @@ namespace TicTacToe
             MessageBox.Show(message, "CONFIRMATION" , MessageBoxButton.OK);*/
         }
 
-        private string[] saveButtonState(Button[] buttonArray, string[] buttonState)
+        /*private string[] saveButtonState(Button[] buttonArray, string[] buttonState)
         {
             for (int i = 0; i < buttonArray.Length; i++)
                 buttonState[i] = buttonArray[i].Content + "";
 
             return buttonState;
+        }*/
+
+        private void playAgainBut_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

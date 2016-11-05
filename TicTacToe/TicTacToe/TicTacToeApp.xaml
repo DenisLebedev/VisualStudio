@@ -25,6 +25,7 @@
         <Button x:Name="undobutton" Content="Undo" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="324,195,0,0" Click="undobutton_Click"/>
         <Button x:Name="button1" Content="Main Menu" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="324,170,0,0"/>
         <Button x:Name="rulesbutton" Content="Rules" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="324,220,0,0"/>
+        <Button x:Name="playAgainBut" Content="Play Again!" HorizontalAlignment="Left" Height="36" Margin="98,258,0,0" VerticalAlignment="Top" Width="75" Click="playAgainBut_Click"/>
 
     </Grid>
 </Window>

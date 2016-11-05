@@ -23,31 +23,31 @@ namespace TicTacToe
          * methods to make the EasyIA play
          * 
          */
-        public static void Play(Button[] buttonArray, int[,] winCombination)
+        public static void Play(String[] gameState, int[,] winCombination)
         {
             int actionWin;
             int actionBlock;
-            actionWin = Win(buttonArray, winCombination);
-            actionBlock = Block(buttonArray, winCombination);
+            actionWin = Win(gameState, winCombination);
+            actionBlock = Block(gameState, winCombination);
 
             if (actionBlock == -1 && actionWin == -1)
             {
-                normalPlay(buttonArray);
+                normalPlay(gameState);
             }
             if (actionWin != -1)
             {
-                playWin(buttonArray, actionWin);
+                playWin(gameState, actionWin);
             }
 
             if (actionBlock != -1 && actionWin == -1)
             {
-                playBlock(buttonArray, actionBlock);
+                playBlock(gameState, actionBlock);
             }
         }
 
 
 
-        private static int Block(Button[] buttonArray, int[,] winCombination)
+        private static int Block(String[] buttonArray, int[,] winCombination)
         {
             //Loop looking for a POSSIBLE WIN
             for (int i = 0; i < 8; i++)
@@ -56,22 +56,22 @@ namespace TicTacToe
                 int b = winCombination[i, 1];
                 int c = winCombination[i, 2];
 
-                Button but1 = buttonArray[a];
-                Button but2 = buttonArray[b];
-                Button but3 = buttonArray[c];
+                string but1 = buttonArray[a];
+                string but2 = buttonArray[b];
+                string but3 = buttonArray[c];
 
                 // Look if there is a POSSIBLE WIN
-                if (but1.Content == "X" && but2.Content == "X" && but3.Content == "")
+                if (but1 == "X" && but2 == "X" && but3 == "")
                 {
                     return indexOfEmpty(i, buttonArray, winCombination);    //Will look which index of the button will be EMPTY
                 }
 
-                if (but1.Content == "X" && but2.Content == "" && but3.Content == "X")
+                if (but1 == "X" && but2 == "" && but3 == "X")
                 {
                     return indexOfEmpty(i, buttonArray, winCombination);    //Will look which index of the button will be EMPTY
                 }
 
-                if (but1.Content == "" && but2.Content == "X" && but3.Content == "X")
+                if (but1 == "" && but2 == "X" && but3 == "X")
                 {
                     return indexOfEmpty(i, buttonArray, winCombination);     //Will look which index of the button will be EMPTY
                 }
@@ -81,7 +81,7 @@ namespace TicTacToe
         }
 
 
-        private static int Win(Button[] buttonArray, int[,] winCombination)
+        private static int Win(String[] buttonArray, int[,] winCombination)
         {
             //Loop looking for a POSSIBLE WIN
             for (int i = 0; i < 8; i++)
@@ -90,22 +90,22 @@ namespace TicTacToe
                 int b = winCombination[i, 1];
                 int c = winCombination[i, 2];
 
-                Button but1 = buttonArray[a];
-                Button but2 = buttonArray[b];
-                Button but3 = buttonArray[c];
+                string but1 = buttonArray[a];
+                string but2 = buttonArray[b];
+                string but3 = buttonArray[c];
 
                 // Look if there is a POSSIBLE WIN
-                if (but1.Content == "O" && but2.Content == "O" && but3.Content == "")
+                if (but1 == "O" && but2 == "O" && but3 == "")
                 {
                     return indexOfEmpty(i, buttonArray, winCombination);    //Will look which index of the button will be EMPTY
                 }
 
-                if (but1.Content == "O" && but2.Content == "" && but3.Content == "O")
+                if (but1 == "O" && but2 == "" && but3 == "O")
                 {
                     return indexOfEmpty(i, buttonArray, winCombination);    //Will look which index of the button will be EMPTY
                 }
 
-                if (but1.Content == "" && but2.Content == "O" && but3.Content == "O")
+                if (but1 == "" && but2 == "O" && but3 == "O")
                 {
                     return indexOfEmpty(i, buttonArray, winCombination);     //Will look which index of the button will be EMPTY
                 }
@@ -121,13 +121,13 @@ namespace TicTacToe
          * If I do not found it I will return -1 and deal with it 
          * in the Play method.
          */
-        private static int indexOfEmpty(int index, Button[] buttonArray, int[,] winCombination)
+        private static int indexOfEmpty(int index, String[] buttonArray, int[,] winCombination)
         {
             int foundEmpty = -1;
 
             for (int i = 0; i < winCombination.GetLength(1); i++)
             {
-                if (buttonArray[winCombination[index, i]].Content == "")
+                if (buttonArray[winCombination[index, i]] == "")
                 {
                     foundEmpty = winCombination[index, i];
                 }
@@ -135,12 +135,12 @@ namespace TicTacToe
             return foundEmpty;
         }
 
-        private static void playBlock(Button[] buttonArray, int index)
+        private static void playBlock(string[] buttonArray, int index)
         {
-            Console.WriteLine("Content at Index: " + buttonArray[index].Content + "Index: " + index);
-                if (buttonArray[index].Content == "")
+            Console.WriteLine("Content at Index: " + buttonArray[index] + "Index: " + index);
+                if (buttonArray[index] == "")
                 {
-                    buttonArray[index].Content = "O";
+                    buttonArray[index] = "O";
                     return;
                 }
         }
@@ -150,34 +150,34 @@ namespace TicTacToe
          * If you cannot Block you will just play a random 
          * turn. 
          */
-        private static void normalPlay(Button[] buttonArray)
+        private static void normalPlay(string[] buttonArray)
         {
-           
+            Console.WriteLine("Given: " + buttonArray[0]);
             //Take a corner and I will take the middle
-            if ((buttonArray[0].Content == "X" || buttonArray[2].Content == "X" ||
-                buttonArray[6].Content == "X" || buttonArray[8].Content == "X") && buttonArray[4].Content == "")
+            if ((buttonArray[0] == "X" || buttonArray[2] == "X" ||
+                buttonArray[6] == "X" || buttonArray[8] == "X") && buttonArray[4] == "")
             {
-                buttonArray[4].Content = "O";
+                buttonArray[4] = "O";
                 return;
             }
 
             
-            if ((buttonArray[6].Content == "X" && buttonArray[2].Content == "X") && buttonArray[5].Content == "")
+            if ((buttonArray[6] == "X" && buttonArray[2] == "X") && buttonArray[5] == "")
             {
-                buttonArray[5].Content = "O";
+                buttonArray[5] = "O";
                 return;
             }
 
-            if((buttonArray[0].Content == "X" && buttonArray[8].Content == "X") && buttonArray[3].Content == "")
+            if((buttonArray[0] == "X" && buttonArray[8] == "X") && buttonArray[3] == "")
             {
-                buttonArray[3].Content = "O";
+                buttonArray[3] = "O";
                 return;
             }
 
-            if (((buttonArray[7].Content == "X" && (buttonArray[5].Content == "X" || buttonArray[3].Content == "X")) && buttonArray[4].Content == "")||
-                ((buttonArray[1].Content == "X" && (buttonArray[3].Content == "X" || buttonArray[5].Content == "X")) && buttonArray[4].Content == ""))
+            if (((buttonArray[7] == "X" && (buttonArray[5] == "X" || buttonArray[3] == "X")) && buttonArray[4] == "")||
+                ((buttonArray[1] == "X" && (buttonArray[3] == "X" || buttonArray[5] == "X")) && buttonArray[4] == ""))
             {
-                buttonArray[4].Content = "O";
+                buttonArray[4] = "O";
                 return;
             }
 
@@ -186,18 +186,18 @@ namespace TicTacToe
             Random rnd = new Random();
             int num = rnd.Next(0, 4);
             for(int i=0; i < 8; i++)
-                if (buttonArray[game[num,i]].Content == "")
+                if (buttonArray[game[num,i]] == "")
                 {
-                    buttonArray[game[num, i]].Content = "O";
+                    buttonArray[game[num, i]] = "O";
                     //Play ONLY once and leave
                     return;
                 }
         }
 
 
-        private static void playWin(Button[] buttonArray, int index)
+        private static void playWin(string[] buttonArray, int index)
         {
-            buttonArray[index].Content = "O";
+            buttonArray[index] = "O";
         }
     }
 }
