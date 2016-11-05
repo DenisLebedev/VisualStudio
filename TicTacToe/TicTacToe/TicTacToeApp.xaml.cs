@@ -25,8 +25,6 @@ namespace TicTacToe
         //Keep track of all turns (max 9)
         private short turn =0;
         private bool winner = false;
-        private int pointPl1 = 0;
-        private int pointPl2 = 0;
 
         private TicTacGame game;
 
@@ -77,7 +75,7 @@ namespace TicTacToe
             }
 
             //9 turn were made and nobody won = tie
-            if (turn == 9)
+            if (game.Turn == 9)
             {
                 MessageBox.Show("The game is over and it a Tie!");
                 return;
@@ -91,7 +89,7 @@ namespace TicTacToe
             }
 
             //IF we clic we increment Turn
-            if (turn != 9)
+            if (game.Turn != 9)
             {
                 tempButton.Content = "X";
                 game.nextTurn();
@@ -99,23 +97,29 @@ namespace TicTacToe
                 //Saving state
                 game.saveButtonState(buttonArray);
 
-                if (turn > 4)
-                    this.winner = checkWinner(this.buttonArray, winCombination);
+                this.winner = game.checkWinner();
+                
                 if (winner)
+                {
+                    Console.WriteLine("Human Won!");
                     game.addPointPl1();
-                else {
-                   
-                    IAHard.Play(game.getButtonState(), game.getWinCombination);
-                    game.nextTurn();
+                    addColor(buttonArray, game.getWinCombination);
+                }
+                else
+                {
 
+                    buttonArray = game.loadOnButtonState(buttonArray, IAHard.Play(game.getButtonState(), game.getWinCombination));
+                    game.nextTurn();
                     //Saving state
                     game.saveButtonState(buttonArray);
 
-                    this.winner = checkWinner(this.buttonArray, winCombination);
+                    //this.winner = checkWinner(this.buttonArray, winCombination);
+                    this.winner = game.checkWinner();
                     if (winner)
                     {
-                        MessageBox.Show("Only dumb can loose...","MessageForDumb", MessageBoxButton.OK);
+                        MessageBox.Show("Only dumb can loose...", "MessageForDumb", MessageBoxButton.OK);
                         game.addPointPl2();
+                        addColor(buttonArray, game.getWinCombination);
                     }
                 }
             }
@@ -123,10 +127,9 @@ namespace TicTacToe
 
         }
 
-        private static bool checkWinner(Button [] buttonArray, int [,] winCombination)
+        private static void addColor(Button [] buttonArray, int [,] winCombination)
         {
             bool result = false;
-
             //Loop looking for a Winner
             for (int i = 0; i < 8 && !result; i++)
             {
@@ -150,7 +153,7 @@ namespace TicTacToe
                     //break;  // you won do not continue.
                 }
             }
-                return result;
+                return;
         }
 
         private void undobutton_Click(object sender, RoutedEventArgs e)

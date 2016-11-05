@@ -23,7 +23,7 @@ namespace TicTacToe
          * methods to make the EasyIA play
          * 
          */
-        public static void Play(String[] gameState, int[,] winCombination)
+        public static string[] Play(String[] gameState, int[,] winCombination)
         {
             int actionWin;
             int actionBlock;
@@ -32,17 +32,19 @@ namespace TicTacToe
 
             if (actionBlock == -1 && actionWin == -1)
             {
-                normalPlay(gameState);
+                gameState = normalPlay(gameState);
             }
             if (actionWin != -1)
             {
-                playWin(gameState, actionWin);
+                gameState = playWin(gameState, actionWin);
             }
 
             if (actionBlock != -1 && actionWin == -1)
             {
-                playBlock(gameState, actionBlock);
+                gameState = playBlock(gameState, actionBlock);
             }
+
+            return gameState;
         }
 
 
@@ -135,14 +137,15 @@ namespace TicTacToe
             return foundEmpty;
         }
 
-        private static void playBlock(string[] buttonArray, int index)
+        private static string[] playBlock(string[] buttonArray, int index)
         {
             Console.WriteLine("Content at Index: " + buttonArray[index] + "Index: " + index);
                 if (buttonArray[index] == "")
                 {
                     buttonArray[index] = "O";
-                    return;
                 }
+
+            return buttonArray;
         }
 
 
@@ -150,7 +153,7 @@ namespace TicTacToe
          * If you cannot Block you will just play a random 
          * turn. 
          */
-        private static void normalPlay(string[] buttonArray)
+        private static string[] normalPlay(string[] buttonArray)
         {
             Console.WriteLine("Given: " + buttonArray[0]);
             //Take a corner and I will take the middle
@@ -158,27 +161,27 @@ namespace TicTacToe
                 buttonArray[6] == "X" || buttonArray[8] == "X") && buttonArray[4] == "")
             {
                 buttonArray[4] = "O";
-                return;
+                return buttonArray;
             }
 
             
             if ((buttonArray[6] == "X" && buttonArray[2] == "X") && buttonArray[5] == "")
             {
                 buttonArray[5] = "O";
-                return;
+                return buttonArray;
             }
 
             if((buttonArray[0] == "X" && buttonArray[8] == "X") && buttonArray[3] == "")
             {
                 buttonArray[3] = "O";
-                return;
+                return buttonArray;
             }
 
             if (((buttonArray[7] == "X" && (buttonArray[5] == "X" || buttonArray[3] == "X")) && buttonArray[4] == "")||
                 ((buttonArray[1] == "X" && (buttonArray[3] == "X" || buttonArray[5] == "X")) && buttonArray[4] == ""))
             {
                 buttonArray[4] = "O";
-                return;
+                return buttonArray;
             }
 
             //I created different Strategy and playstyle to make the game unique
@@ -190,14 +193,16 @@ namespace TicTacToe
                 {
                     buttonArray[game[num, i]] = "O";
                     //Play ONLY once and leave
-                    return;
+                    return buttonArray;
                 }
+            return buttonArray;
         }
 
 
-        private static void playWin(string[] buttonArray, int index)
+        private static string[] playWin(string[] buttonArray, int index)
         {
             buttonArray[index] = "O";
+            return buttonArray;
         }
     }
 }

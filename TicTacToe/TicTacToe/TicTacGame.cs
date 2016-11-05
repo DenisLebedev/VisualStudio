@@ -27,6 +27,14 @@ namespace TicTacToe
             gameState = new string[] {"","","","","","","","","" };
         }
 
+        public Button[] loadOnButtonState(Button[] buttonArray, string[] gameBoard)
+        {
+            for (int i = 0; i < gameBoard.Length; i++)
+                buttonArray[i].Content = gameBoard[i];
+
+            return buttonArray;
+        }
+
 
         /**
          * Save the state after every round
