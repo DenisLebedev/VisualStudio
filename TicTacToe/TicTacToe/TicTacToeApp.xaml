@@ -22,10 +22,12 @@
         <Label x:Name="p2label" Content="Player 2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="376,80,0,0" Width="62"/>
         <Label x:Name="p1scorelabel" Content="&#xD;&#xA;" HorizontalAlignment="Left" Margin="316,106,0,0" VerticalAlignment="Top" Width="60" Height="51" Background="#FFCBC1C1"/>
         <Label x:Name="p2scorelabel" Content="&#xA;" HorizontalAlignment="Left" Margin="378,106,0,0" VerticalAlignment="Top" Width="60" Height="51" Background="#FFD6CCCC"/>
-        <Button x:Name="undobutton" Content="Undo" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="324,195,0,0" Click="undobutton_Click"/>
-        <Button x:Name="button1" Content="Main Menu" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="324,170,0,0"/>
-        <Button x:Name="rulesbutton" Content="Rules" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="324,220,0,0"/>
-        <Button x:Name="playAgainBut" Content="Play Again!" HorizontalAlignment="Left" Height="36" Margin="98,258,0,0" VerticalAlignment="Top" Width="75" Click="playAgainBut_Click"/>
+        <Button x:Name="undobutton" Content="Undo" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="98,308,0,0" Click="undobutton_Click"/>
+        <Button x:Name="button1" Content="Main Menu" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="135,284,0,0"/>
+        <Button x:Name="rulesbutton" Content="Rules" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="55,284,0,0"/>
+        <Button x:Name="playAgainBut" Content="Play Again!" HorizontalAlignment="Left" Height="36" Margin="98,242,0,0" VerticalAlignment="Top" Width="75" Click="playAgainBut_Click"/>
+        <Label x:Name="drawLabel" Content="&#xA;" HorizontalAlignment="Left" Margin="351,186,0,0" VerticalAlignment="Top" Width="60" Height="51" Background="#FFCBC1C1"/>
+        <Label x:Name="drawNameLabel" Content="Draw" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="351,162,0,0" Width="60"/>
 
     </Grid>
 </Window>

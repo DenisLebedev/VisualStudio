@@ -41,8 +41,9 @@ namespace TicTacToe
             //Loading points on the board
             p1scorelabel.Content = game.PointPl1;
             p2scorelabel.Content = game.PointPl2;
+            drawLabel.Content = game.Draw;
 
-            //undobutton.IsEnabled = false;
+            displaylabel.Content = "You";
 
             //redirect ALL buttons in a general method
             for (int i = 0; i < 9; i++)
@@ -76,6 +77,7 @@ namespace TicTacToe
                 return;
             }
 
+            //Keep track of the LAST turn for the undo
             if (game.Turn != 0)
             {
                 game.trackOldState(game.getButtonState());
@@ -91,6 +93,7 @@ namespace TicTacToe
             {
                 playAgainBut.IsEnabled = true;
                 MessageBox.Show("The game is over and it a Tie!");
+                game.addDraw();
                 return;
             }
         }
@@ -122,11 +125,14 @@ namespace TicTacToe
 
                     if (game.Turn % 2 != 0)
                     {
+                        displaylabel.Content = game.IA;
                         game.nextTurn();
                         tempButton.Content = "O";
                     }
 
                     game.nextTurn();
+
+                    
 
                     //Saving state
                     game.saveButtonState(buttonArray);
@@ -139,6 +145,9 @@ namespace TicTacToe
                         addColor(buttonArray, game.getWinCombination);
                         playAgainBut.IsEnabled = true;
 
+                    }else
+                    {
+                        displaylabel.Content = "You";
                     }
                 }
             }
@@ -148,14 +157,14 @@ namespace TicTacToe
         {
             if (game.Turn != 9)
             {
-
-
+                //User play
                 tempButton.Content = "X";
                 game.nextTurn();
 
                 //Saving state
                 game.saveButtonState(buttonArray);
 
+                //Look if the User Won
                 this.winner = game.checkWinner();
 
                 if (winner)
@@ -166,23 +175,32 @@ namespace TicTacToe
                     playAgainBut.IsEnabled = true;
 
                 }
-                else
+
+                if (!winner)
                 {
-                    if(game.IA == "Hard")
+                    //If the user did not won then play the IA choosed by the user
+                    if (game.IA == "Hard")
+                    {
+                        displaylabel.Content = game.IA;
                         buttonArray = game.loadOnButtonState(buttonArray, IAHard.Play(game.getButtonState(), game.getWinCombination));
+                    }
 
                     if (game.IA == "Medium")
+                    {
+                        displaylabel.Content = game.IA;
                         buttonArray = game.loadOnButtonState(buttonArray, IAMedium.Play(game.getButtonState(), game.getWinCombination));
+                    }
 
                     if (game.IA == "Easy")
+                    {
+                        displaylabel.Content = game.IA;
                         buttonArray = game.loadOnButtonState(buttonArray, IAEasy.Play(game.getButtonState(), game.getWinCombination));
+                    }
 
-
-                    game.nextTurn();
-                }
                     //Saving state
                     game.saveButtonState(buttonArray);
-
+                    game.nextTurn();
+                    //Look if the IA won
                     this.winner = game.checkWinner();
                     if (winner)
                     {
@@ -192,8 +210,14 @@ namespace TicTacToe
                         playAgainBut.IsEnabled = true;
 
                     }
+                    else
+                    {
+                        displaylabel.Content = "You";
+                    }
                 }
             }
+        }
+        
         
 
         private static void addColor(Button [] buttonArray, int [,] winCombination)
@@ -258,6 +282,7 @@ namespace TicTacToe
             game.saveButtonState(buttonArray);
             undobutton.IsEnabled = false;
             game.deleteTurn();
+            game.deleteTurn();
         }
 
         private void playAgainBut_Click(object sender, RoutedEventArgs e)
@@ -265,13 +290,15 @@ namespace TicTacToe
             playAgainBut.IsEnabled = false;
 
             removeColor(buttonArray, game.getWinCombination);
-            game = new TicTacGame(game.IA,0,game.PointPl1, game.PointPl2);
+            Console.WriteLine("Draw: " + game.Draw);
+            game = new TicTacGame(game.IA,game.PointPl1, game.PointPl2, game.Draw);
 
             //game.getButtonState() is set to empty by the constructor!
             buttonArray = game.loadOnButtonState(buttonArray, game.getButtonState());
 
             p1scorelabel.Content = game.PointPl1;
             p2scorelabel.Content = game.PointPl2;
+            drawLabel.Content = game.Draw;
 
             this.winner = false;
             undobutton.IsEnabled = true;

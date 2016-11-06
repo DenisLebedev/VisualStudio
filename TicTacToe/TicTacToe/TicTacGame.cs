@@ -11,6 +11,7 @@ namespace TicTacToe
     {
         private string ia;
         private int turn;
+        private int draw;
         private int pointPl1;
         private int pointPl2;
         private int[,] winCombination = new int[,] { { 0, 1, 2 }, { 3, 4, 5 }, { 6, 7, 8 }, { 0, 3, 6 }, { 1, 4, 7 }, { 2, 5, 8 }, { 0, 4, 8 }, { 2, 4, 6 } };
@@ -18,10 +19,12 @@ namespace TicTacToe
         private string[] oldState;
 
 
-        public TicTacGame(string ia, int turn, int pointPl1, int pointPl2)
+        public TicTacGame(string ia, int pointPl1, int pointPl2, int draw)
         {
             this.ia = ia;
-            this.turn = turn;
+            //By default when you call me turn is 0
+            this.turn = 0;
+            this.draw = draw;
             this.pointPl1 = pointPl1;
             this.pointPl2 = pointPl2;
             //Default Game Board is Empty (For saving to file)
@@ -128,7 +131,7 @@ namespace TicTacToe
          */
         public void nextTurn()
         {
-            Turn = turn+=1;
+            Turn = Turn +=1;
         }
 
         /**
@@ -137,8 +140,7 @@ namespace TicTacToe
          */ 
         public void deleteTurn()
         {
-            Console.WriteLine("Im called");
-            Turn = turn -= 2;
+            Turn = Turn -= 1;
         }
 
 
@@ -191,7 +193,7 @@ namespace TicTacToe
         public void addPointPl1()
         {
                
-            PointPl1 = pointPl1+= 1;
+            PointPl1 = PointPl1 += 1;
         }
 
 
@@ -200,7 +202,24 @@ namespace TicTacToe
          */
         public void addPointPl2()
         {
-            PointPl2 = pointPl2+= 1;
+            PointPl2 = PointPl2 += 1;
+        }
+
+        public int Draw
+        {
+            get
+            {
+                return this.draw;
+            }
+            private set
+            {
+                this.draw = value;
+            }
+        }
+
+        public void addDraw()
+        {
+            Draw = Draw += 1;
         }
 
 
