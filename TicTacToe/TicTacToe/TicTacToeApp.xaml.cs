@@ -27,14 +27,10 @@ namespace TicTacToe
 
         private TicTacGame game;
 
-        //ALL possible combination to win ... 
-        private int[,] winCombination = new int[,] { { 0, 1, 2 }, { 3, 4, 5 }, { 6, 7, 8 }, { 0, 3, 6 }, { 1, 4, 7 }, { 2, 5, 8 }, { 0, 4, 8 }, { 2, 4, 6 } };
-        private string[] buttonState = new string[9];
-
         public TicTacToeApp()
         {
             InitializeComponent();
-            playAgainBut.Visibility = Visibility.Hidden;
+            playAgainBut.IsEnabled = false;
             //Initalize ALL 9 buttons from the game
             buttonArray = new Button[9] { but1, but2, but3, but4, but5, but6, but7, but8, but9 };
 
@@ -46,7 +42,7 @@ namespace TicTacToe
             p1scorelabel.Content = game.PointPl1;
             p2scorelabel.Content = game.PointPl2;
 
-
+            //undobutton.IsEnabled = false;
 
             //redirect ALL buttons in a general method
             for (int i = 0; i < 9; i++)
@@ -73,24 +69,87 @@ namespace TicTacToe
                 return;
             }
 
-            //9 turn were made and nobody won = tie
-            if (game.Turn > 7)
-            {
-                playAgainBut.Visibility = Visibility.Visible;
-                MessageBox.Show("The game is over and it a Tie!");
-                return;
-            }
-
             // if not empty the button has a content already: X or O
-            if (tempButton.Content != "")    
+            if (tempButton.Content as string != "")    
             {
                 MessageBox.Show("Button already has value!", "ERROR", MessageBoxButton.OK);
                 return;
             }
 
-            //IF we clic we increment Turn
+            if (game.Turn != 0)
+            {
+                game.trackOldState(game.getButtonState());
+            }
+
+            if (game.IA != "Human")
+                playIA(tempButton);
+            else
+                playHuman(tempButton);
+
+            //9 turn were made and nobody won = tie
+            if (game.Turn > 8)
+            {
+                playAgainBut.IsEnabled = true;
+                MessageBox.Show("The game is over and it a Tie!");
+                return;
+            }
+        }
+
+        private void playHuman(Button tempButton)
+        {
             if (game.Turn != 9)
             {
+                if (game.Turn % 2 == 0)
+                {
+                    tempButton.Content = "X";
+                }
+
+                //Saving state
+                game.saveButtonState(buttonArray);
+
+                this.winner = game.checkWinner();
+
+                if (winner)
+                {
+                    MessageBox.Show("Your are just lucky sir", "LuckyMan", MessageBoxButton.OK);
+                    game.addPointPl1();
+                    addColor(buttonArray, game.getWinCombination);
+                    playAgainBut.IsEnabled = true;
+
+                }
+                else
+                {
+
+                    if (game.Turn % 2 != 0)
+                    {
+                        game.nextTurn();
+                        tempButton.Content = "O";
+                    }
+
+                    game.nextTurn();
+
+                    //Saving state
+                    game.saveButtonState(buttonArray);
+
+                    this.winner = game.checkWinner();
+                    if (winner)
+                    {
+                        MessageBox.Show("Only dumb can loose...", "MessageForDumb", MessageBoxButton.OK);
+                        game.addPointPl2();
+                        addColor(buttonArray, game.getWinCombination);
+                        playAgainBut.IsEnabled = true;
+
+                    }
+                }
+            }
+        }
+
+        private void playIA(Button tempButton)
+        {
+            if (game.Turn != 9)
+            {
+
+
                 tempButton.Content = "X";
                 game.nextTurn();
 
@@ -98,38 +157,44 @@ namespace TicTacToe
                 game.saveButtonState(buttonArray);
 
                 this.winner = game.checkWinner();
-                
+
                 if (winner)
                 {
-                    Console.WriteLine("Human Won!");
+                    MessageBox.Show("Your are just lucky sir", "LuckyMan", MessageBoxButton.OK);
                     game.addPointPl1();
                     addColor(buttonArray, game.getWinCombination);
-                    playAgainBut.Visibility = Visibility.Visible;
+                    playAgainBut.IsEnabled = true;
 
                 }
                 else
                 {
+                    if(game.IA == "Hard")
+                        buttonArray = game.loadOnButtonState(buttonArray, IAHard.Play(game.getButtonState(), game.getWinCombination));
 
-                    buttonArray = game.loadOnButtonState(buttonArray, IAHard.Play(game.getButtonState(), game.getWinCombination));
+                    if (game.IA == "Medium")
+                        buttonArray = game.loadOnButtonState(buttonArray, IAMedium.Play(game.getButtonState(), game.getWinCombination));
+
+                    if (game.IA == "Easy")
+                        buttonArray = game.loadOnButtonState(buttonArray, IAEasy.Play(game.getButtonState(), game.getWinCombination));
+
+
                     game.nextTurn();
+                }
                     //Saving state
                     game.saveButtonState(buttonArray);
 
-                    //this.winner = checkWinner(this.buttonArray, winCombination);
                     this.winner = game.checkWinner();
                     if (winner)
                     {
                         MessageBox.Show("Only dumb can loose...", "MessageForDumb", MessageBoxButton.OK);
                         game.addPointPl2();
                         addColor(buttonArray, game.getWinCombination);
-                        playAgainBut.Visibility = Visibility.Visible;
+                        playAgainBut.IsEnabled = true;
 
                     }
                 }
             }
-
-
-        }
+        
 
         private static void addColor(Button [] buttonArray, int [,] winCombination)
         {
@@ -183,14 +248,21 @@ namespace TicTacToe
 
         private void undobutton_Click(object sender, RoutedEventArgs e)
         {
+            if(game.Turn == 0 || winner == true || game.IA == "Human")
+            {
+                MessageBox.Show("Invalid Undo Sir...","Undo Message", MessageBoxButton.OK);
+                return;
+            }
 
-          /*  String message = "Are you sure you want to undo your last move? Warning: You can only undo one move.";
-            MessageBox.Show(message, "CONFIRMATION" , MessageBoxButton.OK);*/
+            buttonArray = game.loadOnButtonState(buttonArray,game.getOldState());
+            game.saveButtonState(buttonArray);
+            undobutton.IsEnabled = false;
+            game.deleteTurn();
         }
 
         private void playAgainBut_Click(object sender, RoutedEventArgs e)
         {
-            playAgainBut.Visibility = Visibility.Hidden;
+            playAgainBut.IsEnabled = false;
 
             removeColor(buttonArray, game.getWinCombination);
             game = new TicTacGame(game.IA,0,game.PointPl1, game.PointPl2);
@@ -202,6 +274,8 @@ namespace TicTacToe
             p2scorelabel.Content = game.PointPl2;
 
             this.winner = false;
+            undobutton.IsEnabled = true;
+
         }
     }
 }

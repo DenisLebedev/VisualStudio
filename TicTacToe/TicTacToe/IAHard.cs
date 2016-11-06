@@ -20,7 +20,7 @@ namespace TicTacToe
          * methods to make the EasyIA play
          * 
          */
-        public static string[] Play(String[] gameState, int[,] winCombination)
+        public static string[] Play(string[] gameState, int[,] winCombination)
         {
             int actionWin;
             int actionBlock;
@@ -46,7 +46,7 @@ namespace TicTacToe
 
 
 
-        private static int Block(String[] buttonArray, int[,] winCombination)
+        private static int Block(string[] buttonArray, int[,] winCombination)
         {
             //Loop looking for a POSSIBLE WIN
             for (int i = 0; i < 8; i++)
@@ -80,7 +80,7 @@ namespace TicTacToe
         }
 
 
-        private static int Win(String[] buttonArray, int[,] winCombination)
+        private static int Win(string[] buttonArray, int[,] winCombination)
         {
             //Loop looking for a POSSIBLE WIN
             for (int i = 0; i < 8; i++)
@@ -120,7 +120,7 @@ namespace TicTacToe
          * If I do not found it I will return -1 and deal with it 
          * in the Play method.
          */
-        private static int indexOfEmpty(int index, String[] buttonArray, int[,] winCombination)
+        private static int indexOfEmpty(int index, string[] buttonArray, int[,] winCombination)
         {
             int foundEmpty = -1;
 

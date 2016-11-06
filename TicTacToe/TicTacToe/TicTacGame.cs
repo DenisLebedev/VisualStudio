@@ -9,15 +9,16 @@ namespace TicTacToe
 {
     class TicTacGame
     {
-        private String ia;
+        private string ia;
         private int turn;
         private int pointPl1;
         private int pointPl2;
         private int[,] winCombination = new int[,] { { 0, 1, 2 }, { 3, 4, 5 }, { 6, 7, 8 }, { 0, 3, 6 }, { 1, 4, 7 }, { 2, 5, 8 }, { 0, 4, 8 }, { 2, 4, 6 } };
         private string[] gameState;
+        private string[] oldState;
 
 
-        public TicTacGame(String ia, int turn, int pointPl1, int pointPl2)
+        public TicTacGame(string ia, int turn, int pointPl1, int pointPl2)
         {
             this.ia = ia;
             this.turn = turn;
@@ -25,12 +26,28 @@ namespace TicTacToe
             this.pointPl2 = pointPl2;
             //Default Game Board is Empty (For saving to file)
             gameState = new string[] {"","","","","","","","","" };
+            oldState = new string[] { "", "", "", "", "", "", "", "", "" };
         }
 
-        public Button[] loadOnButtonState(Button[] buttonArray, string[] gameBoard)
+        public void trackOldState(string[] gameBoard)
+        {
+            for (int i = 0; i < oldState.Length; i++)
+                this.oldState[i] = gameBoard[i];
+        }
+
+        public string[] getOldState()
+        {
+            string[] copyState = new string[9];
+            Array.Copy(oldState, copyState, oldState.Length);
+            return copyState;
+        }
+
+        public Button[] loadOnButtonState(Button[] buttonArray,string[] gameBoard)
         {
             for (int i = 0; i < gameBoard.Length; i++)
+            {
                 buttonArray[i].Content = gameBoard[i];
+            }
 
             return buttonArray;
         }
@@ -114,10 +131,20 @@ namespace TicTacToe
             Turn = turn+=1;
         }
 
+        /**
+         * If you clic on undo you have to
+         * delete the turn that you made
+         */ 
+        public void deleteTurn()
+        {
+            Console.WriteLine("Im called");
+            Turn = turn -= 2;
+        }
+
 
         /**
          * Return the IA that the user choosed
-         */ 
+         */
         public string IA
         {
             get
@@ -138,7 +165,6 @@ namespace TicTacToe
             }
             private set
             {
-                Console.WriteLine("PrivateSetterPl1: " + value);
                 this.pointPl1 = value;
             }
         }
