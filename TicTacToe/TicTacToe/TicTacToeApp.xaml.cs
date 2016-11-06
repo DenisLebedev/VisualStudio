@@ -23,7 +23,6 @@ namespace TicTacToe
         private Button[] buttonArray;
 
         //Keep track of all turns (max 9)
-        private short turn =0;
         private bool winner = false;
 
         private TicTacGame game;
@@ -35,7 +34,7 @@ namespace TicTacToe
         public TicTacToeApp()
         {
             InitializeComponent();
-
+            playAgainBut.Visibility = Visibility.Hidden;
             //Initalize ALL 9 buttons from the game
             buttonArray = new Button[9] { but1, but2, but3, but4, but5, but6, but7, but8, but9 };
 
@@ -75,8 +74,9 @@ namespace TicTacToe
             }
 
             //9 turn were made and nobody won = tie
-            if (game.Turn == 9)
+            if (game.Turn > 7)
             {
+                playAgainBut.Visibility = Visibility.Visible;
                 MessageBox.Show("The game is over and it a Tie!");
                 return;
             }
@@ -104,6 +104,8 @@ namespace TicTacToe
                     Console.WriteLine("Human Won!");
                     game.addPointPl1();
                     addColor(buttonArray, game.getWinCombination);
+                    playAgainBut.Visibility = Visibility.Visible;
+
                 }
                 else
                 {
@@ -120,6 +122,8 @@ namespace TicTacToe
                         MessageBox.Show("Only dumb can loose...", "MessageForDumb", MessageBoxButton.OK);
                         game.addPointPl2();
                         addColor(buttonArray, game.getWinCombination);
+                        playAgainBut.Visibility = Visibility.Visible;
+
                     }
                 }
             }
@@ -141,7 +145,7 @@ namespace TicTacToe
                 Button but2 = buttonArray[b];
                 Button but3 = buttonArray[c];
 
-                if (but1.Content == "" || but2.Content == "" || but3.Content == "") // if one if blank
+                if ((but1.Content as string) == "" || (but2.Content as string) == "" || (but3.Content as string) == "") // if one if blank
                     continue;    // if they are empty that mean nothing happen this turn
 
                 if (but1.Content == but2.Content && but2.Content == but3.Content)
@@ -150,10 +154,31 @@ namespace TicTacToe
                     but1.FontFamily = but2.FontFamily = but3.FontFamily = new FontFamily("Arial Black"); //Change the Text of the winner
 
                     result = true;
-                    //break;  // you won do not continue.
                 }
             }
                 return;
+        }
+
+        private void removeColor(Button[] buttonArray, int[,] winCombination)
+        {
+
+            for (int i = 0; i < 8; i++)
+            {
+                int a = winCombination[i, 0];
+                int b = winCombination[i, 1];
+                int c = winCombination[i, 2];
+
+                Button but1 = buttonArray[a];
+                Button but2 = buttonArray[b];
+                Button but3 = buttonArray[c];
+
+                if (but1.Background == Brushes.Green && but2.Background == Brushes.Green && but3.Background == Brushes.Green) // if one if blank
+                {
+                    but1.Background = but2.Background = but3.Background = Brushes.LightGray;
+                    but1.FontFamily = but2.FontFamily = but3.FontFamily = new FontFamily("Sans Serif");
+                    return;    // if they are empty that mean nothing happen this turn
+                }
+            }
         }
 
         private void undobutton_Click(object sender, RoutedEventArgs e)
@@ -163,17 +188,20 @@ namespace TicTacToe
             MessageBox.Show(message, "CONFIRMATION" , MessageBoxButton.OK);*/
         }
 
-        /*private string[] saveButtonState(Button[] buttonArray, string[] buttonState)
-        {
-            for (int i = 0; i < buttonArray.Length; i++)
-                buttonState[i] = buttonArray[i].Content + "";
-
-            return buttonState;
-        }*/
-
         private void playAgainBut_Click(object sender, RoutedEventArgs e)
         {
+            playAgainBut.Visibility = Visibility.Hidden;
 
+            removeColor(buttonArray, game.getWinCombination);
+            game = new TicTacGame(game.IA,0,game.PointPl1, game.PointPl2);
+
+            //game.getButtonState() is set to empty by the constructor!
+            buttonArray = game.loadOnButtonState(buttonArray, game.getButtonState());
+
+            p1scorelabel.Content = game.PointPl1;
+            p2scorelabel.Content = game.PointPl2;
+
+            this.winner = false;
         }
     }
 }

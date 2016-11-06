@@ -81,10 +81,6 @@ namespace TicTacToe
 
                 if (but1 == but2 && but2 == but3)
                 {
-                    //THIS PART IS FOR DESIGN -- MOVE LATER
-                    /*but1.Background = but2.Background = but3.Background = Brushes.Green; //Change the Color of the BackGroung
-                    but1.FontFamily = but2.FontFamily = but3.FontFamily = new FontFamily("Arial Black"); //Change the Text of the winner*/
-
                     result = true;
                 }
             }
