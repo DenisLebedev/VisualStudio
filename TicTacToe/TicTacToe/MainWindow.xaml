@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid Opacity="0.75">
-        <Button x:Name="newGame" Content="New Game" HorizontalAlignment="Left" Height="33" Margin="391,80,0,0" VerticalAlignment="Top" Width="111" Click="newGame_Click" FontSize="20" FontFamily="SimHei">
+        <Button x:Name="rules" Content="Rules" HorizontalAlignment="Left" Height="33" Margin="392,156,0,0" VerticalAlignment="Top" Width="115" RenderTransformOrigin="0.5,0.5" FontFamily="SimHei" FontSize="20" Click="rulesButton_Click">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                     <GradientStop Color="#FFF3F3F3" Offset="0"/>
@@ -17,7 +17,7 @@
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
-        <Button x:Name="rules" Content="Rules" HorizontalAlignment="Left" Height="33" Margin="392,156,0,0" VerticalAlignment="Top" Width="111" RenderTransformOrigin="0.5,0.5" FontFamily="SimHei" FontSize="20">
+        <Button x:Name="load" Content="Load" HorizontalAlignment="Left" Height="33" Margin="392,118,0,0" VerticalAlignment="Top" Width="115" FontSize="20" FontFamily="SimHei" Click="load_Click">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                     <GradientStop Color="#FFF3F3F3" Offset="0"/>
@@ -27,17 +27,7 @@
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
-        <Button x:Name="load" Content="Load" HorizontalAlignment="Left" Height="33" Margin="392,118,0,0" VerticalAlignment="Top" Width="111" FontSize="20" FontFamily="SimHei" Click="load_Click">
-            <Button.Background>
-                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
-                    <GradientStop Color="#FFF3F3F3" Offset="0"/>
-                    <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
-                    <GradientStop Color="#FFDDDDDD" Offset="0.5"/>
-                    <GradientStop Color="#FFFF0101" Offset="1"/>
-                </LinearGradientBrush>
-            </Button.Background>
-        </Button>
-        <Button x:Name="exit" Content="Exit" HorizontalAlignment="Left" Height="33" Margin="391,261,0,0" VerticalAlignment="Top" Width="106" FontFamily="SimHei" FontSize="20">
+        <Button x:Name="exit" Content="Exit" HorizontalAlignment="Left" Height="33" Margin="391,261,0,0" VerticalAlignment="Top" Width="116" FontFamily="SimHei" FontSize="20" RenderTransformOrigin="0.508,-0.034">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                     <GradientStop Color="#FFF3F3F3" Offset="0"/>
@@ -49,5 +39,18 @@
         </Button>
         <Image x:Name="tic_tac_toe_jpg" Margin="0,18,131,0" Source="tic_tac_toe.jpg" Stretch="Fill"/>
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="129,10,0,0" Width="274" Height="29" FontFamily="MV Boli" FontSize="22" Text="Let's play TIC TAC TOE!"/>
+        <ComboBox x:Name="gameSelection" HorizontalAlignment="Left" Height="32" Margin="392,81,0,0" VerticalAlignment="Top" Width="115" SelectedIndex="0" FontSize="18">
+            <ComboBox.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#FFFF0101"/>
+                    <GradientStop Color="#FFFF0101" Offset="1"/>
+                </LinearGradientBrush>
+            </ComboBox.Background>
+            <Button x:Name="new_game" Content="New Game" FontSize="18" IsDefault="True" Background="#FFE2E2E2"/>
+            <Button x:Name="easyBut" Content="Easy AI" FontSize="18" Click="easyBut_Click"/>
+            <Button x:Name="mediumBut" Content="Medium AI" FontSize="18" Click="mediumBut_Click"/>
+            <Button x:Name="hardBut" Content="Hard AI" FontSize="18" Click="hardBut_Click"/>
+            <Button x:Name="two_playBut" Content="2 Players" Click="two_playBut_Click"/>
+        </ComboBox>
     </Grid>
 </Window>

@@ -28,6 +28,7 @@ namespace TicTacToe
         private bool winner = false;
 
          private TicTacGame game;
+     
 
         public TicTacToeApp(string ia, int pointPl1, int pointPl2, int draw)
         {
@@ -39,7 +40,7 @@ namespace TicTacToe
 
             //Default new game
             game = new TicTacGame(ia, pointPl1, pointPl2, draw);
-
+           
             //Loading points on the board
             p1scorelabel.Content = game.PointPl1;
             p2scorelabel.Content = game.PointPl2;
@@ -150,7 +151,6 @@ namespace TicTacToe
                     if (game.Turn % 2 != 0)
                     {
                         displaylabel.Content = game.IA;
-                        game.nextTurn();
                         tempButton.Content = "O";
                     }
 
@@ -330,6 +330,16 @@ namespace TicTacToe
         {
             Serialization seri = new Serialization();
             seri.Serializable(game);
+        }
+
+        private void mainMenuButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow main = new MainWindow();
+            main.Show();
+            this.Close();
+            
+            
+          
         }
     }
 }

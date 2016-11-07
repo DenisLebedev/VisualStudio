@@ -35,7 +35,7 @@
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
-        <Button x:Name="button1" Content="Main Menu" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="332,276,0,0" RenderTransformOrigin="0.624,0.536" FontFamily="SimHei" FontSize="18">
+        <Button x:Name="mainMenuButton" Content="Main Menu" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="332,276,0,0" RenderTransformOrigin="0.624,0.536" FontFamily="SimHei" FontSize="18" Click="mainMenuButton_Click">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                     <GradientStop Color="#FFF3F3F3" Offset="0"/>
