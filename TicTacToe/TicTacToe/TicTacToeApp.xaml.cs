@@ -124,12 +124,17 @@ namespace TicTacToe
             else
                 playHuman(tempButton);
 
+            //if you won in 9 turn do not go in the Tie
+            if (this.winner == true)
+                return;
+
             //9 turn were made and nobody won = tie
             if (game.Turn > 8)
             {
                 playAgainBut.IsEnabled = true;
                 MessageBox.Show("The game is over and it a Tie!");
                 game.addDraw();
+                drawLabel.Content = game.Draw;
                 return;
             }
         }
@@ -150,9 +155,10 @@ namespace TicTacToe
 
                 if (winner)
                 {
+                    addColor(buttonArray, game.getWinCombination);
                     MessageBox.Show("Your are just lucky sir", "LuckyMan", MessageBoxButton.OK);
                     game.addPointPl1();
-                    addColor(buttonArray, game.getWinCombination);
+                    p1scorelabel.Content = game.PointPl1;
                     playAgainBut.IsEnabled = true;
 
                 }
@@ -175,9 +181,10 @@ namespace TicTacToe
                     this.winner = game.checkWinner();
                     if (winner)
                     {
+                        addColor(buttonArray, game.getWinCombination);
                         MessageBox.Show("Only dumb can loose...", "MessageForDumb", MessageBoxButton.OK);
                         game.addPointPl2();
-                        addColor(buttonArray, game.getWinCombination);
+                        p1scorelabel.Content = game.PointPl1;
                         playAgainBut.IsEnabled = true;
 
                     }else
@@ -204,9 +211,10 @@ namespace TicTacToe
 
                 if (winner)
                 {
+                    addColor(buttonArray, game.getWinCombination);
                     MessageBox.Show("Your are just lucky sir", "LuckyMan", MessageBoxButton.OK);
                     game.addPointPl1();
-                    addColor(buttonArray, game.getWinCombination);
+                    p1scorelabel.Content = game.PointPl1;
                     playAgainBut.IsEnabled = true;
 
                 }
@@ -239,9 +247,10 @@ namespace TicTacToe
                     this.winner = game.checkWinner();
                     if (winner)
                     {
+                        addColor(buttonArray, game.getWinCombination);
                         MessageBox.Show("Only dumb can loose...", "MessageForDumb", MessageBoxButton.OK);
                         game.addPointPl2();
-                        addColor(buttonArray, game.getWinCombination);
+                        p2scorelabel.Content = game.PointPl2;
                         playAgainBut.IsEnabled = true;
 
                     }
@@ -328,10 +337,6 @@ namespace TicTacToe
 
             //game.getButtonState() is set to empty by the constructor!
             buttonArray = game.loadOnButtonState(buttonArray, game.getButtonState());
-
-            p1scorelabel.Content = game.PointPl1;
-            p2scorelabel.Content = game.PointPl2;
-            drawLabel.Content = game.Draw;
 
             this.winner = false;
             undobutton.IsEnabled = true;

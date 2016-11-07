@@ -163,19 +163,30 @@ namespace TicTacToe
                 return buttonArray;
             }
 
-            if((buttonArray[0] == "X" && buttonArray[8] == "X") && buttonArray[3] == "")
+            if ((buttonArray[0] == "X" && buttonArray[8] == "X") && buttonArray[3] == "")
             {
                 buttonArray[3] = "O";
                 return buttonArray;
             }
 
-            if (((buttonArray[7] == "X" && (buttonArray[5] == "X" || buttonArray[3] == "X")) && buttonArray[4] == "")||
+            if (((buttonArray[7] == "X" && (buttonArray[5] == "X" || buttonArray[3] == "X")) && buttonArray[4] == "") ||
                 ((buttonArray[1] == "X" && (buttonArray[3] == "X" || buttonArray[5] == "X")) && buttonArray[4] == ""))
             {
                 buttonArray[4] = "O";
                 return buttonArray;
             }
 
+            if((buttonArray[1] == "X" || buttonArray[5] == "X") && buttonArray[2] == "")
+            {
+                buttonArray[2] = "O";
+                return buttonArray;
+            }
+
+            if ((buttonArray[3] == "X" || buttonArray[7] == "X") && buttonArray[6] == "")
+             {
+                buttonArray[6] = "O";
+                return buttonArray;
+            }
             //I created different Strategy and playstyle to make the game unique
             int[,] game = new int[4, 9] { { 2, 6, 4, 7, 5, 8, 0, 1, 3 }, { 6, 8, 4, 0, 2, 3, 5, 1, 7 }, { 0, 2, 6, 1, 3, 8, 4, 7, 5 }, {2,4,6,0,8,1,7,5,3 } };
             Random rnd = new Random();
