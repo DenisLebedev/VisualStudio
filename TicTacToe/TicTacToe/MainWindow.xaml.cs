@@ -28,8 +28,8 @@ namespace TicTacToe
 
         private void newGame_Click(object sender, RoutedEventArgs e)
         {
-            Window ticTacApp = new TicTacToeApp();
-            ticTacApp.Show();
+            Window difficulty = new Difficulty();
+            difficulty.Show();
         }
         
         /*private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

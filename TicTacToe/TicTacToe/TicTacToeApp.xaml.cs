@@ -25,7 +25,9 @@ namespace TicTacToe
         //Keep track of all turns (max 9)
         private bool winner = false;
 
-        private TicTacGame game;
+        //  private TicTacGame game;
+        Difficulty game =  new Difficulty();
+        // I wanna get selected game object from Difficulty
 
         public TicTacToeApp()
         {
@@ -36,7 +38,7 @@ namespace TicTacToe
 
 
             //Default new game
-            game = new TicTacGame("Hard",0,0,0);
+            //   game = new TicTacGame("Medium", 0, 0, 0);
 
             //Loading points on the board
             p1scorelabel.Content = game.PointPl1;
@@ -52,7 +54,6 @@ namespace TicTacToe
             }            
             
         }
-
         /**
          * ClickHanlder will capture all buttons instead of doing 9 iddferent button method
          * Then I will cast the sender to a Button which will represent the clicked button

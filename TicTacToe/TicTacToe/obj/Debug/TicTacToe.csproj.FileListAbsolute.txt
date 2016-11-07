@@ -152,3 +152,5 @@ C:\Users\hadi\Source\Repos\VisualStudio2\TicTacToe\TicTacToe\obj\Debug\TicTacToe
 C:\Users\hadi\Source\Repos\VisualStudio2\TicTacToe\TicTacToe\obj\Debug\TicTacToe.g.resources
 C:\Users\hadi\Source\Repos\VisualStudio2\TicTacToe\TicTacToe\obj\Debug\TicTacToe.Properties.Resources.resources
 C:\Users\hadi\Source\Repos\VisualStudio2\TicTacToe\TicTacToe\obj\Debug\TicTacToe.csproj.GenerateResource.Cache
+C:\Users\hadi\Source\Repos\VisualStudio2\TicTacToe\TicTacToe\obj\Debug\Difficulty.g.cs
+C:\Users\hadi\Source\Repos\VisualStudio2\TicTacToe\TicTacToe\obj\Debug\Difficulty.baml
