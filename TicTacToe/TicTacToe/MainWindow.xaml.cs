@@ -31,7 +31,23 @@ namespace TicTacToe
             Window difficulty = new Difficulty();
             difficulty.Show();
         }
+
+        private void load_Click(object sender, RoutedEventArgs e)
+        {
+            Serialization seri = new Serialization();
+            TicTacGame game;
+            game = seri.Deserializable();
+            TicTacToeApp tictac = new TicTacToeApp(game.IA, game.PointPl1, game.PointPl2, game.Draw, game.Turn, game.getButtonState(), game.getOldState());
+            tictac.Show();
+        }
+
+           /* string path;
+            path = System.IO.Path.GetDirectoryName( 
+                    System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase );
+            MessageBox.Show( path );*/
+
         
+
         /*private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (comboBox.SelectedIndex == 1 || comboBox.SelectedIndex == 2)

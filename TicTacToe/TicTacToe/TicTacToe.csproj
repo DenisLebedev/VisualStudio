@@ -64,6 +64,7 @@
     <Compile Include="IAEasy.cs" />
     <Compile Include="IAHard.cs" />
     <Compile Include="IAMedium.cs" />
+    <Compile Include="Serialization.cs" />
     <Compile Include="TicTacGame.cs" />
     <Compile Include="TicTacToeApp.xaml.cs">
       <DependentUpon>TicTacToeApp.xaml</DependentUpon>

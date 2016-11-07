@@ -7,6 +7,7 @@ using System.Windows.Controls;
 
 namespace TicTacToe
 {
+    [Serializable]
     class TicTacGame
     {
         private string ia;
@@ -30,6 +31,17 @@ namespace TicTacToe
             //Default Game Board is Empty (For saving to file)
             gameState = new string[] {"","","","","","","","","" };
             oldState = new string[] { "", "", "", "", "", "", "", "", "" };
+        }
+
+        public TicTacGame(string ia, int pointPl1, int pointPl2, int draw, int turn, string[] savedBoard, string[] savedOldBoard)
+        {
+            this.ia = ia;
+            this.pointPl1 = pointPl1;
+            this.pointPl2 = pointPl2;
+            this.draw = draw;
+            Turn = turn;
+            this.gameState = savedBoard;
+            this.oldState = savedOldBoard;
         }
 
         public void trackOldState(string[] gameBoard)

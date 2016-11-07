@@ -72,7 +72,6 @@ namespace TicTacToe
 
             }
 
-            Console.WriteLine("Return -1!");
             return -1;
         }
 
@@ -92,7 +91,6 @@ namespace TicTacToe
                 if (buttonArray[winCombination[index, i]] == "")
                 {
                     foundEmpty = winCombination[index, i];
-                    Console.WriteLine("\tFoundEmpty: " + foundEmpty);
                 }
             }
             return foundEmpty;

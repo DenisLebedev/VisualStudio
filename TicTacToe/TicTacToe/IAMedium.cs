@@ -135,7 +135,6 @@ namespace TicTacToe
 
         private static string[] playBlock(string[] buttonArray, int index)
         {
-            Console.WriteLine("Content at Index: " + buttonArray[index] + "Index: " + index);
             if (buttonArray[index] == "")
             {
                 buttonArray[index] = "O";

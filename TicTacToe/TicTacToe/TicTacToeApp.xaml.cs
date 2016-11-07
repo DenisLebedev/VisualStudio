@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -26,8 +28,6 @@ namespace TicTacToe
         private bool winner = false;
 
          private TicTacGame game;
-       // Difficulty game =  new Difficulty();
-        // I wanna get selected game object from Difficulty
 
         public TicTacToeApp(string ia, int pointPl1, int pointPl2, int draw)
         {
@@ -54,6 +54,29 @@ namespace TicTacToe
             }            
             
         }
+
+        public TicTacToeApp(string ia, int pointPl1, int pointPl2, int draw, int turn, string[] savedBoard, string[] savedOldBoard)
+        {
+
+            InitializeComponent();
+            buttonArray = new Button[9] { but1, but2, but3, but4, but5, but6, but7, but8, but9 };
+
+            
+
+            game = new TicTacGame(ia, pointPl1, pointPl2, draw, turn, savedBoard,savedOldBoard);
+            p1scorelabel.Content = game.PointPl1;
+            p2scorelabel.Content = game.PointPl2;
+            drawLabel.Content = game.Draw;
+
+            displaylabel.Content = "You";
+            buttonArray = game.loadOnButtonState(buttonArray, game.getButtonState());
+
+            for (int i = 0; i < 9; i++)
+            {
+                buttonArray[i].Click += new RoutedEventHandler(ClickHandler);
+            }
+        }
+
         /**
          * ClickHanlder will capture all buttons instead of doing 9 iddferent button method
          * Then I will cast the sender to a Button which will represent the clicked button
@@ -235,9 +258,6 @@ namespace TicTacToe
                 Button but2 = buttonArray[b];
                 Button but3 = buttonArray[c];
 
-                if ((but1.Content as string) == "" || (but2.Content as string) == "" || (but3.Content as string) == "") // if one if blank
-                    continue;    // if they are empty that mean nothing happen this turn
-
                 if (but1.Content == but2.Content && but2.Content == but3.Content)
                 {
                     but1.Background = but2.Background = but3.Background = Brushes.Green; //Change the Color of the BackGroung
@@ -291,7 +311,6 @@ namespace TicTacToe
             playAgainBut.IsEnabled = false;
 
             removeColor(buttonArray, game.getWinCombination);
-            Console.WriteLine("Draw: " + game.Draw);
             game = new TicTacGame(game.IA,game.PointPl1, game.PointPl2, game.Draw);
 
             //game.getButtonState() is set to empty by the constructor!
@@ -303,7 +322,14 @@ namespace TicTacToe
 
             this.winner = false;
             undobutton.IsEnabled = true;
+            displaylabel.Content = "You";
 
+        }
+
+        private void saveButton_Click(object sender, RoutedEventArgs e)
+        {
+            Serialization seri = new Serialization();
+            seri.Serializable(game);
         }
     }
 }

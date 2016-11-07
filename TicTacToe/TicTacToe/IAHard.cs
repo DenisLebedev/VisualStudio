@@ -136,7 +136,6 @@ namespace TicTacToe
 
         private static string[] playBlock(string[] buttonArray, int index)
         {
-            Console.WriteLine("Content at Index: " + buttonArray[index] + "Index: " + index);
                 if (buttonArray[index] == "")
                 {
                     buttonArray[index] = "O";
@@ -152,7 +151,6 @@ namespace TicTacToe
          */
         private static string[] normalPlay(string[] buttonArray)
         {
-            Console.WriteLine("Given: " + buttonArray[0]);
             //Take a corner and I will take the middle
             if ((buttonArray[0] == "X" || buttonArray[2] == "X" ||
                 buttonArray[6] == "X" || buttonArray[8] == "X") && buttonArray[4] == "")

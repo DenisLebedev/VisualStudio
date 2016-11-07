@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid Opacity="0.75">
-        <Button x:Name="newGame" Content="New Game" HorizontalAlignment="Left" Height="33" Margin="386,80,0,0" VerticalAlignment="Top" Width="111" Click="newGame_Click" FontSize="20" FontFamily="SimHei">
+        <Button x:Name="newGame" Content="New Game" HorizontalAlignment="Left" Height="33" Margin="391,80,0,0" VerticalAlignment="Top" Width="111" Click="newGame_Click" FontSize="20" FontFamily="SimHei">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                     <GradientStop Color="#FFF3F3F3" Offset="0"/>
@@ -17,7 +17,7 @@
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
-        <Button x:Name="rules" Content="Rules" HorizontalAlignment="Left" Height="33" Margin="386,156,0,0" VerticalAlignment="Top" Width="111" RenderTransformOrigin="0.5,0.5" FontFamily="SimHei" FontSize="20">
+        <Button x:Name="rules" Content="Rules" HorizontalAlignment="Left" Height="33" Margin="392,156,0,0" VerticalAlignment="Top" Width="111" RenderTransformOrigin="0.5,0.5" FontFamily="SimHei" FontSize="20">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                     <GradientStop Color="#FFF3F3F3" Offset="0"/>
@@ -27,7 +27,7 @@
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
-        <Button x:Name="load" Content="Load" HorizontalAlignment="Left" Height="33" Margin="386,118,0,0" VerticalAlignment="Top" Width="111" FontSize="20" FontFamily="SimHei">
+        <Button x:Name="load" Content="Load" HorizontalAlignment="Left" Height="33" Margin="392,118,0,0" VerticalAlignment="Top" Width="111" FontSize="20" FontFamily="SimHei" Click="load_Click">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                     <GradientStop Color="#FFF3F3F3" Offset="0"/>
