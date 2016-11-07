@@ -22,28 +22,26 @@ namespace TicTacToe
         public Difficulty()
         {
             InitializeComponent();
-            
         }
 
         private void easy_ButtonClick(object sender, RoutedEventArgs e)
         {
-            TicTacGame game = new TicTacGame("Easy", 0,0,0);
-            Window ticTacApp = new TicTacToeApp();
+            Window ticTacApp = new TicTacToeApp("Easy", 0, 0, 0);
             ticTacApp.Show();
+         
 
         }
 
         private void medium_ButtonClick(object sender, RoutedEventArgs e)
         {
-            TicTacGame game = new TicTacGame("Medium", 0, 0, 0);
-            Window ticTacApp = new TicTacToeApp();
+
+            Window ticTacApp = new TicTacToeApp("Medium", 0, 0, 0);
             ticTacApp.Show();
         }
 
         private void hard_ButtonClick(object sender, RoutedEventArgs e)
         {
-            TicTacGame game = new TicTacGame("Hard", 0, 0, 0);
-            Window ticTacApp = new TicTacToeApp();
+            Window ticTacApp = new TicTacToeApp("Hard", 0, 0, 0);
             ticTacApp.Show();
 
 

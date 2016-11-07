@@ -25,11 +25,11 @@ namespace TicTacToe
         //Keep track of all turns (max 9)
         private bool winner = false;
 
-        //  private TicTacGame game;
-        Difficulty game =  new Difficulty();
+         private TicTacGame game;
+       // Difficulty game =  new Difficulty();
         // I wanna get selected game object from Difficulty
 
-        public TicTacToeApp()
+        public TicTacToeApp(string ia, int pointPl1, int pointPl2, int draw)
         {
             InitializeComponent();
             playAgainBut.IsEnabled = false;
@@ -38,7 +38,7 @@ namespace TicTacToe
 
 
             //Default new game
-            //   game = new TicTacGame("Medium", 0, 0, 0);
+            game = new TicTacGame(ia, pointPl1, pointPl2, draw);
 
             //Loading points on the board
             p1scorelabel.Content = game.PointPl1;
