@@ -86,6 +86,11 @@ namespace TicTacToe
                             "since it only allows one move to be undoed and that would be unfair!\n\n Have Fun!", " Game Rules: ");
         }
 
+        private void exit_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
 
         /* string path;
          path = System.IO.Path.GetDirectoryName( 

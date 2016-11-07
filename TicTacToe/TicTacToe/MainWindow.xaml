@@ -27,7 +27,7 @@
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
-        <Button x:Name="exit" Content="Exit" HorizontalAlignment="Left" Height="33" Margin="391,261,0,0" VerticalAlignment="Top" Width="116" FontFamily="SimHei" FontSize="20" RenderTransformOrigin="0.508,-0.034">
+        <Button x:Name="exit" Content="Exit" HorizontalAlignment="Left" Height="33" Margin="391,261,0,0" VerticalAlignment="Top" Width="116" FontFamily="SimHei" FontSize="20" RenderTransformOrigin="0.508,-0.034" Click="exit_Click">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                     <GradientStop Color="#FFF3F3F3" Offset="0"/>

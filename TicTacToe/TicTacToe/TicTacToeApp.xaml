@@ -45,7 +45,7 @@
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
-        <Button x:Name="rulesbutton" Content="Rules" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="332,306,0,0" Height="26" FontFamily="SimHei" FontSize="18">
+        <Button x:Name="rulesbutton" Content="Rules" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="332,306,0,0" Height="26" FontFamily="SimHei" FontSize="18" Click="rulesbutton_Click">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                     <GradientStop Color="#FFF3F3F3" Offset="0"/>

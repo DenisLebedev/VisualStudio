@@ -341,5 +341,15 @@ namespace TicTacToe
             
           
         }
+
+        private void rulesbutton_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Basic Rule: The object of Tic Tac Toe is to get three in a row. " +
+                          "You play on a three by three game board. The first player is known as X and the second is O. " +
+                          "Players alternate placing Xs and Os on the game board until either oppent has three in a row or all " +
+                          "nine squares are filled.\n\n" +
+                          "Undo Button: When playing against the AI, you can only use the undo button once. The undo button is disabled while playing against another player " +
+                          "since it only allows one move to be undoed and that would be unfair!\n\n Have Fun!", " Game Rules: ");
+        }
     }
 }
