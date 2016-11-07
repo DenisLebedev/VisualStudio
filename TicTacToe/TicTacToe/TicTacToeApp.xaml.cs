@@ -56,7 +56,7 @@ namespace TicTacToe
             
         }
 
-        public TicTacToeApp(string ia, int pointPl1, int pointPl2, int draw, int turn, string[] savedBoard, string[] savedOldBoard)
+        public TicTacToeApp(string ia, int pointPl1, int pointPl2, int draw, int turn, string[] savedBoard, string[] savedOldBoard, bool undoState)
         {
 
             InitializeComponent();
@@ -64,13 +64,24 @@ namespace TicTacToe
 
             
 
-            game = new TicTacGame(ia, pointPl1, pointPl2, draw, turn, savedBoard,savedOldBoard);
+            game = new TicTacGame(ia, pointPl1, pointPl2, draw, turn, savedBoard,savedOldBoard, undoState);
             p1scorelabel.Content = game.PointPl1;
             p2scorelabel.Content = game.PointPl2;
             drawLabel.Content = game.Draw;
 
             displaylabel.Content = "You";
+
+            if (game.Turn % 2 != 0)
+                displaylabel.Content = game.IA;
+            
+            
+            
+            //Load the content
             buttonArray = game.loadOnButtonState(buttonArray, game.getButtonState());
+
+            //Set the undo state
+            if (game.UndoState == false)
+                undobutton.IsEnabled = false;
 
             for (int i = 0; i < 9; i++)
             {
@@ -304,6 +315,8 @@ namespace TicTacToe
             undobutton.IsEnabled = false;
             game.deleteTurn();
             game.deleteTurn();
+            //set the state to false for saving to files
+            game.UndoState = false;
         }
 
         private void playAgainBut_Click(object sender, RoutedEventArgs e)
@@ -349,7 +362,8 @@ namespace TicTacToe
                           "Players alternate placing Xs and Os on the game board until either oppent has three in a row or all " +
                           "nine squares are filled.\n\n" +
                           "Undo Button: When playing against the AI, you can only use the undo button once. The undo button is disabled while playing against another player " +
-                          "since it only allows one move to be undoed and that would be unfair!\n\n Have Fun!", " Game Rules: ");
+                          "since it only allows one move to be undoed and that would be unfair!\n\n Have Fun!" +
+                          "\nSave: You have to save by your OWN the program will not automatically save the state of the game for you", " Game Rules: ", MessageBoxButton.OK);
         }
     }
 }

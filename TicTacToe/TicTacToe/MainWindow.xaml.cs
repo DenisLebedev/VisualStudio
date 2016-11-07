@@ -34,9 +34,16 @@ namespace TicTacToe
         private void load_Click(object sender, RoutedEventArgs e)
         {
             Serialization seri = new Serialization();
-            TicTacGame game;
-            game = seri.Deserializable();
-            TicTacToeApp tictac = new TicTacToeApp(game.IA, game.PointPl1, game.PointPl2, game.Draw, game.Turn, game.getButtonState(), game.getOldState());
+            TicTacGame game = seri.Deserializable(); ;
+            TicTacToeApp tictac = null; ;
+            try
+            {
+                 tictac = new TicTacToeApp(game.IA, game.PointPl1, game.PointPl2, game.Draw, game.Turn, game.getButtonState(), game.getOldState(), game.UndoState);
+            }catch(NullReferenceException)
+            {
+                MessageBox.Show("File does not exist", "LoadingError", MessageBoxButton.OK);
+                return;
+            }
             tictac.Show();
             this.Close();
         }
@@ -83,29 +90,13 @@ namespace TicTacToe
                             "Players alternate placing Xs and Os on the game board until either oppent has three in a row or all " + 
                             "nine squares are filled.\n\n" +  
                             "Undo Button: When playing against the AI, you can only use the undo button once. The undo button is disabled while playing against another player " +
-                            "since it only allows one move to be undoed and that would be unfair!\n\n Have Fun!", " Game Rules: ");
+                            "since it only allows one move to be undoed and that would be unfair!\n\n Have Fun!" +
+                            "\nSave: You have to save by your OWN the program will not automatically save the state of the game for you", " Game Rules: ", MessageBoxButton.OK);
         }
 
         private void exit_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
-
-
-        /* string path;
-         path = System.IO.Path.GetDirectoryName( 
-                 System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase );
-         MessageBox.Show( path );*/
-
-
-
-        /*private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (comboBox.SelectedIndex == 1 || comboBox.SelectedIndex == 2)
-            {
-                Window ticTacApp = new TicTacToeApp();
-                ticTacApp.Show();
-            }
-        }*/
     }
 }

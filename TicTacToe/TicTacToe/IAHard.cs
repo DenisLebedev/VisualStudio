@@ -151,15 +151,12 @@ namespace TicTacToe
          */
         private static string[] normalPlay(string[] buttonArray)
         {
-            //Take a corner and I will take the middle
-            if ((buttonArray[0] == "X" || buttonArray[2] == "X" ||
-                buttonArray[6] == "X" || buttonArray[8] == "X") && buttonArray[4] == "")
+            if (buttonArray[4] == "")
             {
                 buttonArray[4] = "O";
                 return buttonArray;
             }
 
-            
             if ((buttonArray[6] == "X" && buttonArray[2] == "X") && buttonArray[5] == "")
             {
                 buttonArray[5] = "O";

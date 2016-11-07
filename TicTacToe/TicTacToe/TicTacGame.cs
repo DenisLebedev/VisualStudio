@@ -15,6 +15,8 @@ namespace TicTacToe
         private int draw;
         private int pointPl1;
         private int pointPl2;
+        //by default you have undo
+        private bool undoState = true;
         private int[,] winCombination = new int[,] { { 0, 1, 2 }, { 3, 4, 5 }, { 6, 7, 8 }, { 0, 3, 6 }, { 1, 4, 7 }, { 2, 5, 8 }, { 0, 4, 8 }, { 2, 4, 6 } };
         private string[] gameState;
         private string[] oldState;
@@ -33,13 +35,14 @@ namespace TicTacToe
             oldState = new string[] { "", "", "", "", "", "", "", "", "" };
         }
 
-        public TicTacGame(string ia, int pointPl1, int pointPl2, int draw, int turn, string[] savedBoard, string[] savedOldBoard)
+        public TicTacGame(string ia, int pointPl1, int pointPl2, int draw, int turn, string[] savedBoard, string[] savedOldBoard, bool undo)
         {
             this.ia = ia;
             this.pointPl1 = pointPl1;
             this.pointPl2 = pointPl2;
             this.draw = draw;
             Turn = turn;
+            UndoState = undo;
             this.gameState = savedBoard;
             this.oldState = savedOldBoard;
         }
@@ -245,6 +248,12 @@ namespace TicTacToe
             {
                 return new int[,] { { 0, 1, 2 }, { 3, 4, 5 }, { 6, 7, 8 }, { 0, 3, 6 }, { 1, 4, 7 }, { 2, 5, 8 }, { 0, 4, 8 }, { 2, 4, 6 } };
             }
+        }
+
+        public bool UndoState
+        {
+            get { return undoState; }
+            set { undoState = value; }
         }
     }
 }
